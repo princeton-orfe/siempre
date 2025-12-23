@@ -1,7 +1,7 @@
-name: siempre
+name: Siempre
 type: theme
-description: 'This is a sub-theme of the administrative theme Claro.'
-core_version_requirement: 9.x
+description: 'A sub-theme of Claro that adds visual distinctiveness and configurable accent colors when Claro is used as a site default theme.'
+core_version_requirement: ^9 || ^10 || ^11
 base theme: claro 
 libraries:
   - siempre/styles

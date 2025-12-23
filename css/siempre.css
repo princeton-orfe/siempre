@@ -33,7 +33,7 @@ main.main-content {
 
 .breadcrumb__item {
   line-height: 2rem;
-  border-bottom: 2px solid #003ecc;
+  border-bottom: 2px solid var(--siempre-accent, #003ecc);
 }
 
 .view-currently-logged-in-as {
@@ -42,6 +42,172 @@ main.main-content {
 
 .csv-feed.views-data-export-feed {
   margin: 1em;
+}
+
+/* Accent color usage for links and UI elements */
+a {
+  color: var(--siempre-accent, #0036b1);
+}
+a:hover, a:focus {
+  color: var(--siempre-accent-dark, #002780);
+}
+a:visited {
+  color: var(--siempre-accent-darker, #001a50);
+}
+
+/* Menu and navigation backgrounds */
+.toolbar-bar,
+.toolbar-menu-administration {
+  background-color: var(--siempre-accent, #0036b1);
+}
+
+/* Views field specific styling - Report type badges */
+td.views-field-field-submission-report-type a {
+  color: #fff !important;
+}
+td.views-field-field-submission-report-type a:hover, td.views-field-field-submission-report-type a:focus {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.views-field-field-submission-report-type.final-thesis a {
+  background-color: var(--siempre-accent, rgb(0, 54, 177)) !important;
+}
+.views-field-field-submission-report-type.interim-spring-report a {
+  background-color: var(--siempre-accent-medium, rgb(30, 85, 195)) !important;
+}
+.views-field-field-submission-report-type.final-fall-report a {
+  background-color: var(--siempre-accent-light, rgb(65, 115, 210)) !important;
+}
+.views-field-field-submission-report-type.midterm-report a {
+  background-color: var(--siempre-accent-lighter, rgb(116, 156, 230)) !important;
+}
+.views-field-field-submission-report-type.prospectus-report a {
+  background-color: var(--siempre-accent-lightest, rgb(116, 156, 230)) !important;
+  color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+}
+
+/* Button accent colors */
+.button--primary,
+input[type=submit] {
+  background-color: var(--siempre-accent, #0036b1) !important;
+  border-color: var(--siempre-accent-dark, #002780) !important;
+  color: #ffffff !important;
+}
+.button--primary:hover, .button--primary:focus,
+input[type=submit]:hover,
+input[type=submit]:focus {
+  background-color: var(--siempre-accent-dark, #002780) !important;
+  border-color: var(--siempre-accent-darker, #001a50) !important;
+  color: #ffffff !important;
+}
+
+/* Site branding - override hardcoded colors */
+.site-name a {
+  color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+.site-name a:hover, .site-name a:focus {
+  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+}
+
+/* Main menu - override hardcoded colors */
+ul.menu {
+  background-color: var(--siempre-accent, #0036b1) !important;
+  box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15)) !important;
+}
+ul.menu > li > a {
+  color: #ffffff !important;
+}
+ul.menu > li > a:hover, ul.menu > li > a:focus {
+  background-color: var(--siempre-accent-light, #1a4dc4) !important;
+  color: #ffffff !important;
+}
+
+/* Horizontal tabs - override Claro variables */
+.is-horizontal .tabs__link {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+.is-horizontal .tabs__link:hover, .is-horizontal .tabs__link:focus {
+  color: var(--siempre-accent-dark, #002780) !important;
+  background: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+.is-horizontal .tabs__link.is-active {
+  color: var(--siempre-accent, #0036b1) !important;
+  border-color: var(--siempre-accent, #0036b1) !important;
+}
+.is-horizontal .tabs__link.is-active::before {
+  border-bottom-color: var(--siempre-accent, #0036b1) !important;
+}
+
+/* Sortable table headings */
+.sortable-heading > a {
+  color: var(--siempre-accent-dark, inherit) !important;
+}
+.sortable-heading > a:hover, .sortable-heading > a:focus {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+
+.sortable-heading.is-active > a {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+
+/* Checkboxes */
+.form-boolean--type-checkbox:checked {
+  border-color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent, #0036b1) !important;
+}
+
+.form-boolean--type-checkbox:focus {
+  border-color: var(--siempre-accent, #0036b1) !important;
+  box-shadow: 0 0 0 2px var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+}
+
+/* Details summary */
+.claro-details__summary:hover {
+  color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+
+/* GSR PUID links - special button style */
+td.views-field-field-gsr-puid a {
+  background-color: var(--siempre-accent-bg-light, #f4f0ff) !important;
+  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  border-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+}
+td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
+  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Edit node buttons */
+.views-field-edit-node a {
+  background-color: var(--siempre-accent-lightest, rgb(220, 210, 250)) !important;
+  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+}
+.views-field-edit-node a:hover, .views-field-edit-node a:focus {
+  background-color: var(--siempre-accent-lighter, rgb(230, 220, 255)) !important;
+  color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Mailto buttons */
+.mailto-button {
+  background-color: var(--siempre-accent-dark, #6a0dad) !important;
+  color: #ffffff !important;
+}
+.mailto-button:hover, .mailto-button:focus {
+  background-color: var(--siempre-accent-darker, #5209a0) !important;
+}
+
+/* ORFE action buttons */
+.custom-orfe-actions a {
+  background-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  color: #fff !important;
+}
+.custom-orfe-actions a:hover, .custom-orfe-actions a:focus {
+  background-color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* Footer Styles */
