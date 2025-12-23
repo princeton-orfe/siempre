@@ -4,7 +4,7 @@ A sub-theme of Claro designed for flexible, user-facing administrative use.
 
 ## Accent Color Configuration
 
-The Siempre theme includes a configurable accent color system that allows you to customize the primary brand color throughout your site.
+The Siempre theme includes a configurable accent color system that allows you to customize the primary and complimentary colors throughout your site.
 
 ### Configuring the Accent Color
 
