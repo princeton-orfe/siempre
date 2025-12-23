@@ -19,6 +19,7 @@ function siempre_preprocess_html(&$variables) {
   $css_variables = "
     :root {
       --siempre-accent: {$colors['base']};
+      --siempre-accent-medium: {$colors['medium']};
       --siempre-accent-light: {$colors['light']};
       --siempre-accent-lighter: {$colors['lighter']};
       --siempre-accent-lightest: {$colors['lightest']};
@@ -62,9 +63,10 @@ function _siempre_calculate_color_variants($hex) {
   // Create variants by adjusting lightness.
   $variants = [
     'base' => $hex !== '' ? "#{$hex}" : '#0036b1',
+    'medium' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 5)),
     'light' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 10)),
     'lighter' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 20)),
-    'lightest' => _siempre_hsl_to_hex($hsl['h'], max(50, $hsl['s'] - 20), min(100, $hsl['l'] + 40)),
+    'lightest' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 25)),
     'dark' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], max(0, $hsl['l'] - 10)),
     'darker' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], max(0, $hsl['l'] - 20)),
     'darkest' => _siempre_hsl_to_hex($hsl['h'], min(100, $hsl['s'] + 10), max(0, $hsl['l'] - 30)),

@@ -73,6 +73,9 @@ td.views-field-field-submission-report-type a:hover, td.views-field-field-submis
 .views-field-field-submission-report-type.final-thesis a {
   background-color: var(--siempre-accent, rgb(0, 54, 177)) !important;
 }
+.views-field-field-submission-report-type.interim-spring-report a {
+  background-color: var(--siempre-accent-medium, rgb(30, 85, 195)) !important;
+}
 .views-field-field-submission-report-type.final-fall-report a {
   background-color: var(--siempre-accent-light, rgb(65, 115, 210)) !important;
 }
@@ -80,7 +83,8 @@ td.views-field-field-submission-report-type a:hover, td.views-field-field-submis
   background-color: var(--siempre-accent-lighter, rgb(116, 156, 230)) !important;
 }
 .views-field-field-submission-report-type.prospectus-report a {
-  background-color: var(--siempre-accent-lightest, rgb(173, 200, 255)) !important;
+  background-color: var(--siempre-accent-lightest, rgb(116, 156, 230)) !important;
+  color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
 }
 
 /* Button accent colors */
@@ -125,6 +129,30 @@ ul.menu > li > a:hover, ul.menu > li > a:focus {
 .is-horizontal .tabs__link.is-active {
   color: var(--siempre-accent, #0036b1) !important;
   border-color: var(--siempre-accent, #0036b1) !important;
+  border-bottom-color: var(--siempre-accent, #0036b1) !important;
+}
+
+/* Sortable table headings */
+.sortable-heading > a {
+  color: var(--siempre-accent-dark, inherit) !important;
+}
+.sortable-heading > a:hover, .sortable-heading > a:focus {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+
+.sortable-heading.is-active > a {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+
+/* Checkboxes */
+.form-boolean--type-checkbox:checked {
+  border-color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent, #0036b1) !important;
+}
+
+.form-boolean--type-checkbox:focus {
+  border-color: var(--siempre-accent, #0036b1) !important;
+  box-shadow: 0 0 0 2px var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
 }
 
 /* GSR PUID links - special button style */
