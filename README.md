@@ -1,21 +1,18 @@
 # Siempre
 
-A sub-theme of Claro designed for flexible, user-facing administrative use.
+Sub-theme of Claro for Drupal 10 to repurpose the theme for more flexible and user-facing administrative use.  The Siempre theme includes a configurable accent color system that allows you to customize the primary and complimentary colors throughout your site.
 
 ## Accent Color Configuration
-
-The Siempre theme includes a configurable accent color system that allows you to customize the primary and complimentary colors throughout your site.
-
-### Configuring the Accent Color
 
 1. Go to **Appearance > Settings > Siempre** in your Drupal admin
 2. Find the "Accent Color" field under "Siempre Theme Settings"
 3. Use the color picker to select your desired accent color (default: rgb(0,54,177) / #0036b1)
 4. Save the configuration
 
-### How It Works
+## How It Works
 
 The theme automatically generates complementary color variants from your selected accent color:
+
 - **Base accent**: Used for primary links and UI elements
 - **Light variant**: Used for secondary elements and hover states
 - **Lighter variant**: Used for subtle accents
@@ -25,6 +22,7 @@ The theme automatically generates complementary color variants from your selecte
 ### Elements Using Accent Colors
 
 The accent color system affects:
+
 - All standard links (a tags)
 - Breadcrumb item borders
 - Menu and toolbar backgrounds (.toolbar-bar, .toolbar-menu-administration)
