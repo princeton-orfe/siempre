@@ -163,6 +163,12 @@ ul.menu > li > a:hover, ul.menu > li > a:focus {
   box-shadow: 0 0 0 2px var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
 }
 
+/* Details summary */
+.claro-details__summary:hover {
+  color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+
 /* GSR PUID links - special button style */
 td.views-field-field-gsr-puid a {
   background-color: var(--siempre-accent-bg-light, #f4f0ff) !important;
