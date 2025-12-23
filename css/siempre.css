@@ -100,6 +100,19 @@ ul.menu > li > a:hover, ul.menu > li > a:focus {
   background-color: var(--siempre-accent-light, #1a4dc4) !important;
 }
 
+/* Horizontal tabs - override Claro variables */
+.is-horizontal .tabs__link {
+  color: var(--siempre-accent, #0036b1) !important;
+}
+.is-horizontal .tabs__link:hover, .is-horizontal .tabs__link:focus {
+  color: var(--siempre-accent-dark, #002780) !important;
+  background: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+.is-horizontal .tabs__link.is-active {
+  color: var(--siempre-accent, #0036b1) !important;
+  border-color: var(--siempre-accent, #0036b1) !important;
+}
+
 /* Footer Styles */
 .footer {
   background-color: #333; /* --color-neutral-85 */
