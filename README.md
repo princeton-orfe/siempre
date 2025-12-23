@@ -53,53 +53,6 @@ The theme provides 6 regions organized into two 3-column sections:
 - Subfooter second column
 - Subfooter third column
 
-### Example Block Content
-
-When creating custom blocks for the subfooter:
-
-**Subfooter First Column** - Links block:
-```html
-<div class="subfooter-links">
-  <ul class="list-unstyled">
-    <li><a href="/accessibility">Accessibility Help</a></li>
-    <li><a href="/non-discrimination">Non-Discrimination</a></li>
-  </ul>
-</div>
-```
-
-**Subfooter Second Column** - Copyright block:
-```html
-<p class="copyright-text">
-  © 2025 Your Organization Name
-</p>
-```
-
-**Subfooter Third Column** - Logo block:
-```html
-<a href="https://princeton.edu" class="no-border" title="Princeton University">
-  <img src="/themes/custom/siempre/images/pu-logo-stacked.svg" alt="Princeton University">
-</a>
-```
-
-Note: The Princeton logo SVG (`images/pu-logo-stacked.svg`) will automatically display in all white in the subfooter.
-
-### Styling
-
-The footer and subfooter are styled to match the Princeton ORFE website:
-- **Footer**: Dark background (#333), 5px Princeton orange (#e77500) top border, white text
-  - Middle column is center-aligned on wide screens
-  - List bullets are removed
-- **Subfooter**: Slightly darker background (#1d1d1d), light gray text (#ccc)
-  - Middle column is center-aligned
-  - Right column is right-aligned
-  - List bullets are removed
-  - Princeton logo displays in white
-- Princeton orange (#e77500) hover state for links
-- Responsive grid layouts that stack on mobile devices
-- Proper spacing and typography matching the Princeton design system
-
-You can customize colors and spacing by editing `css/siempre.scss` and recompiling to CSS, or directly edit `css/siempre.css`.
-
 ## Deployment
 
 ### Installation
@@ -129,14 +82,3 @@ You can customize colors and spacing by editing `css/siempre.scss` and recompili
 4. **Enable the theme:**
    - Go to **Appearance** in your Drupal admin
    - Click **Install and set as default** for Siempre
-
-### Updating
-
-To update an existing installation:
-
-```bash
-cd siempre
-git pull
-rsync -azv --exclude-from='.rsyncignore' ./ /path/to/drupal/themes/custom/siempre/
-drush cache:rebuild
-```
