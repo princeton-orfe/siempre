@@ -151,7 +151,10 @@ ul.menu {
 	&.is-active {
 		color: var(--siempre-accent, #0036b1) !important;
 		border-color: var(--siempre-accent, #0036b1) !important;
-		border-bottom-color: var(--siempre-accent, #0036b1) !important;
+
+		&::before {
+			border-bottom-color: var(--siempre-accent, #0036b1) !important;
+		}
 	}
 }
 
