@@ -61,12 +61,26 @@ a:visited {
   background-color: var(--siempre-accent, #0036b1);
 }
 
-/* Views field specific styling */
+/* Views field specific styling - Report type badges */
 td.views-field-field-submission-report-type a {
-  color: var(--siempre-accent-light, #1a4dc4);
+  color: #fff !important;
 }
 td.views-field-field-submission-report-type a:hover, td.views-field-field-submission-report-type a:focus {
-  color: var(--siempre-accent, #0036b1);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.views-field-field-submission-report-type.final-thesis a {
+  background-color: var(--siempre-accent, rgb(0, 54, 177)) !important;
+}
+.views-field-field-submission-report-type.final-fall-report a {
+  background-color: var(--siempre-accent-light, rgb(65, 115, 210)) !important;
+}
+.views-field-field-submission-report-type.midterm-report a {
+  background-color: var(--siempre-accent-lighter, rgb(116, 156, 230)) !important;
+}
+.views-field-field-submission-report-type.prospectus-report a {
+  background-color: var(--siempre-accent-lightest, rgb(173, 200, 255)) !important;
 }
 
 /* Button accent colors */
