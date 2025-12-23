@@ -65,6 +65,10 @@ a {
 .toolbar-bar,
 .toolbar-menu-administration {
 	background-color: var(--siempre-accent, #0036b1);
+
+	a {
+		color: #ffffff !important;
+	}
 }
 
 /* Views field specific styling - Report type badges */
@@ -106,11 +110,13 @@ td.views-field-field-submission-report-type a {
 input[type="submit"] {
 	background-color: var(--siempre-accent, #0036b1) !important;
 	border-color: var(--siempre-accent-dark, #002780) !important;
+	color: #ffffff !important;
 
 	&:hover,
 	&:focus {
 		background-color: var(--siempre-accent-dark, #002780) !important;
 		border-color: var(--siempre-accent-darker, #001a50) !important;
+		color: #ffffff !important;
 	}
 }
 
@@ -131,9 +137,12 @@ ul.menu {
 	box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0,54,177,0.15)) !important;
 
 	> li > a {
+		color: #ffffff !important;
+
 		&:hover,
 		&:focus {
 			background-color: var(--siempre-accent-light, #1a4dc4) !important;
+			color: #ffffff !important;
 		}
 	}
 }

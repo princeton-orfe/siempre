@@ -60,6 +60,10 @@ a:visited {
 .toolbar-menu-administration {
   background-color: var(--siempre-accent, #0036b1);
 }
+.toolbar-bar a,
+.toolbar-menu-administration a {
+  color: #ffffff !important;
+}
 
 /* Views field specific styling - Report type badges */
 td.views-field-field-submission-report-type a {
@@ -92,12 +96,14 @@ td.views-field-field-submission-report-type a:hover, td.views-field-field-submis
 input[type=submit] {
   background-color: var(--siempre-accent, #0036b1) !important;
   border-color: var(--siempre-accent-dark, #002780) !important;
+  color: #ffffff !important;
 }
 .button--primary:hover, .button--primary:focus,
 input[type=submit]:hover,
 input[type=submit]:focus {
   background-color: var(--siempre-accent-dark, #002780) !important;
   border-color: var(--siempre-accent-darker, #001a50) !important;
+  color: #ffffff !important;
 }
 
 /* Site branding - override hardcoded colors */
@@ -114,8 +120,12 @@ ul.menu {
   background-color: var(--siempre-accent, #0036b1) !important;
   box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15)) !important;
 }
+ul.menu > li > a {
+  color: #ffffff !important;
+}
 ul.menu > li > a:hover, ul.menu > li > a:focus {
   background-color: var(--siempre-accent-light, #1a4dc4) !important;
+  color: #ffffff !important;
 }
 
 /* Horizontal tabs - override Claro variables */
