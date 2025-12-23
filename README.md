@@ -119,3 +119,44 @@ The footer and subfooter are styled to match the Princeton ORFE website:
 - Proper spacing and typography matching the Princeton design system
 
 You can customize colors and spacing by editing `css/siempre.scss` and recompiling to CSS, or directly edit `css/siempre.css`.
+
+## Deployment
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/princeton-orfe/siempre.git
+   ```
+
+2. **Deploy to your Drupal installation:**
+   ```bash
+   rsync -azv --exclude-from='siempre/.rsyncignore' siempre/ www/themes/custom/siempre/
+   ```
+
+   Or if you're already in the siempre directory:
+   ```bash
+   rsync -azv --exclude-from='.rsyncignore' ./ /path/to/drupal/themes/custom/siempre/
+   ```
+
+3. **Clear Drupal cache:**
+   ```bash
+   drush cache:rebuild
+   ```
+
+   Or via the admin UI: **Configuration > Development > Performance > Clear all caches**
+
+4. **Enable the theme:**
+   - Go to **Appearance** in your Drupal admin
+   - Click **Install and set as default** for Siempre
+
+### Updating
+
+To update an existing installation:
+
+```bash
+cd siempre
+git pull
+rsync -azv --exclude-from='.rsyncignore' ./ /path/to/drupal/themes/custom/siempre/
+drush cache:rebuild
+```
