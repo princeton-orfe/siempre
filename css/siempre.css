@@ -50,7 +50,9 @@ main.main-content {
   border-top: 5px solid #e77500; /* --color-brand-70 Princeton orange */
   color: #ffffff;
   padding: 2rem 0;
-  width: 100%;
+  width: calc(100% + 6em);
+  margin-left: -3em;
+  margin-right: -3em;
   flex-shrink: 0;
 }
 .footer .container {
@@ -112,7 +114,9 @@ main.main-content {
   color: #cccccc;
   padding: 1.5rem 0;
   font-size: 0.875rem;
-  width: 100%;
+  width: calc(100% + 6em);
+  margin-left: -3em;
+  margin-right: -3em;
   flex-shrink: 0;
 }
 .subfooter .container {
