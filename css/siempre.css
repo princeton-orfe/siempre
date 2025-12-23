@@ -60,10 +60,6 @@ a:visited {
 .toolbar-menu-administration {
   background-color: var(--siempre-accent, #0036b1);
 }
-.toolbar-bar a,
-.toolbar-menu-administration a {
-  color: #ffffff !important;
-}
 
 /* Views field specific styling - Report type badges */
 td.views-field-field-submission-report-type a {
