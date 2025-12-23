@@ -7,55 +7,64 @@ This theme includes footer and subfooter regions styled similar to the Princeton
 
 ### Regions Available
 
-- **Footer**: Main footer region with dark background (#262626)
-- **Subfooter**: Bottom-most footer region with darker background (#1a1a1a) for legal notices and utility links
+The theme provides 6 regions organized into two 3-column sections:
+
+**Footer (3 columns)**
+- Footer first column
+- Footer second column
+- Footer third column
+
+**Subfooter (3 columns)**
+- Subfooter first column
+- Subfooter second column
+- Subfooter third column
 
 ### Adding Content to Footer and Subfooter
 
 1. Go to **Structure > Block layout** in your Drupal admin
-2. Find the "Footer" and "Subfooter" regions
-3. Place blocks in these regions
+2. Find the footer and subfooter column regions
+3. Place blocks in the appropriate columns
 
 ### Recommended Content Structure
 
-#### Footer Region
-The footer uses a responsive 3-column grid layout. You can add blocks with:
-- Contact information (address, phone, email)
-- Social media links
-- Department/site branding
-- Quick links or navigation
+#### Footer Columns
+The footer has 3 equal-width columns. Typical usage:
+- **First column**: Contact information (address, phone, email)
+- **Second column**: Social media links or quick links
+- **Third column**: Department/site branding or additional navigation
 
-#### Subfooter Region
-The subfooter is designed for a 3-column layout with:
-- **Left column**: Utility links (wrap in a div with class `subfooter-links`)
-  - Accessibility statement
-  - Non-discrimination policy
-  - Other legal/policy links
-- **Middle column**: Copyright text (wrap in a `<p>` with class `copyright-text`)
-- **Right column**: Logo or institutional branding (wrap in a div with class `copyright`)
+#### Subfooter Columns
+The subfooter also has 3 equal-width columns. Typical usage:
+- **First column**: Utility links (Accessibility, Non-discrimination, etc.)
+- **Second column**: Copyright text
+- **Third column**: Logo or institutional branding
 
-### Example Subfooter HTML Structure
+### Example Block Content
 
+When creating custom blocks for the subfooter:
+
+**Subfooter First Column** - Links block:
 ```html
-<!-- Left column: Links -->
 <div class="subfooter-links">
   <ul class="list-unstyled">
     <li><a href="/accessibility">Accessibility Help</a></li>
     <li><a href="/non-discrimination">Non-Discrimination</a></li>
   </ul>
 </div>
+```
 
-<!-- Middle column: Copyright -->
+**Subfooter Second Column** - Copyright block:
+```html
 <p class="copyright-text">
   © 2025 Your Organization Name
 </p>
+```
 
-<!-- Right column: Logo -->
-<div class="copyright">
-  <a href="https://yoursite.edu" class="no-border" title="Your Organization">
-    <img src="/path/to/logo.svg" alt="Your Organization">
-  </a>
-</div>
+**Subfooter Third Column** - Logo block:
+```html
+<a href="https://yoursite.edu" class="no-border" title="Your Organization">
+  <img src="/path/to/logo.svg" alt="Your Organization">
+</a>
 ```
 
 ### Styling

@@ -15,7 +15,11 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
   sidebar_first: 'First sidebar'
-  footer: 'Footer'
-  subfooter: 'Subfooter'
+  footer_first: 'Footer first column'
+  footer_second: 'Footer second column'
+  footer_third: 'Footer third column'
+  subfooter_first: 'Subfooter first column'
+  subfooter_second: 'Subfooter second column'
+  subfooter_third: 'Subfooter third column'
 regions_hidden:
   - sidebar_first

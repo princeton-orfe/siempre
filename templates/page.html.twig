@@ -69,19 +69,38 @@
 
   </main>
 
-  {% if page.footer %}
+  {% if page.footer_first or page.footer_second or page.footer_third %}
     <footer role="contentinfo" class="footer region region-footer" id="footer">
+      <h2 class="sr-only">Footer</h2>
       <div class="container">
-        {{ page.footer }}
+        <div class="footer-columns">
+          <div class="footer-column footer-column--first">
+            {{ page.footer_first }}
+          </div>
+          <div class="footer-column footer-column--second">
+            {{ page.footer_second }}
+          </div>
+          <div class="footer-column footer-column--third">
+            {{ page.footer_third }}
+          </div>
+        </div>
       </div>
     </footer>
   {% endif %}
 
-  {% if page.subfooter %}
+  {% if page.subfooter_first or page.subfooter_second or page.subfooter_third %}
     <div class="subfooter">
       <div class="container">
         <div class="row">
-          {{ page.subfooter }}
+          <div class="col-md-4">
+            {{ page.subfooter_first }}
+          </div>
+          <div class="col-md-4">
+            {{ page.subfooter_second }}
+          </div>
+          <div class="col-md-4">
+            {{ page.subfooter_third }}
+          </div>
         </div>
       </div>
     </div>
