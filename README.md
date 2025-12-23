@@ -53,26 +53,6 @@ The theme provides 6 regions organized into two 3-column sections:
 - Subfooter second column
 - Subfooter third column
 
-### Adding Content to Footer and Subfooter
-
-1. Go to **Structure > Block layout** in your Drupal admin
-2. Find the footer and subfooter column regions
-3. Place blocks in the appropriate columns
-
-### Recommended Content Structure
-
-#### Footer Columns
-The footer has 3 equal-width columns. Typical usage:
-- **First column**: Contact information (address, phone, email)
-- **Second column**: Social media links or quick links
-- **Third column**: Department/site branding or additional navigation
-
-#### Subfooter Columns
-The subfooter also has 3 equal-width columns. Typical usage:
-- **First column**: Utility links (Accessibility, Non-discrimination, etc.)
-- **Second column**: Copyright text
-- **Third column**: Logo or institutional branding
-
 ### Example Block Content
 
 When creating custom blocks for the subfooter:
