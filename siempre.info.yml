@@ -1,6 +1,6 @@
 name: Siempre
 type: theme
-description: 'A sub-theme of Claro for public-facing administrative use with configurable accent colors.'
+description: 'A sub-theme of Claro that adds visual distinctiveness and configurable accent colors when Claro is used as a site default theme.'
 core_version_requirement: ^9 || ^10 || ^11
 base theme: claro 
 libraries:
