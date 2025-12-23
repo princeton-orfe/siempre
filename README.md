@@ -1,5 +1,6 @@
-# siempre
-Sub-theme of Claro to repurpose the theme for more flexible and user-facing administrative use.
+# Siempre
+
+A sub-theme of Claro designed for flexible, public-facing administrative use.
 
 ## Accent Color Configuration
 

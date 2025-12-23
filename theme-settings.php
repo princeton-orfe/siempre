@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Theme settings form for Siempre theme.
+ * Theme settings form for the Siempre theme.
  */
 
 use Drupal\Core\Form\FormStateInterface;
