@@ -127,6 +127,47 @@ ul.menu > li > a:hover, ul.menu > li > a:focus {
   border-color: var(--siempre-accent, #0036b1) !important;
 }
 
+/* GSR PUID links - special button style */
+td.views-field-field-gsr-puid a {
+  background-color: var(--siempre-accent-bg-light, #f4f0ff) !important;
+  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  border-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+}
+td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
+  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Edit node buttons */
+.views-field-edit-node a {
+  background-color: var(--siempre-accent-lightest, rgb(220, 210, 250)) !important;
+  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+}
+.views-field-edit-node a:hover, .views-field-edit-node a:focus {
+  background-color: var(--siempre-accent-lighter, rgb(230, 220, 255)) !important;
+  color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Mailto buttons */
+.mailto-button {
+  background-color: var(--siempre-accent-dark, #6a0dad) !important;
+  color: #ffffff !important;
+}
+.mailto-button:hover, .mailto-button:focus {
+  background-color: var(--siempre-accent-darker, #5209a0) !important;
+}
+
+/* ORFE action buttons */
+.custom-orfe-actions a {
+  background-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  color: #fff !important;
+}
+.custom-orfe-actions a:hover, .custom-orfe-actions a:focus {
+  background-color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  transform: translateY(-2px) !important;
+}
+
 /* Footer Styles */
 .footer {
   background-color: #333; /* --color-neutral-85 */
