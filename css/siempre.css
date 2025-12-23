@@ -96,6 +96,9 @@ ul.menu {
   background-color: var(--siempre-accent, #0036b1) !important;
   box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15)) !important;
 }
+ul.menu > li > a:hover, ul.menu > li > a:focus {
+  background-color: var(--siempre-accent-light, #1a4dc4) !important;
+}
 
 /* Footer Styles */
 .footer {
