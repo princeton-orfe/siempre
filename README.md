@@ -35,25 +35,17 @@ The system uses CSS custom properties (variables), so all colors update dynamica
 
 ## Footer and Subfooter
 
-This theme includes footer and subfooter regions in 3-column sets.
-
-### Regions Available
-
 The theme provides 6 regions organized into two 3-column sections:
 
-**Footer (3 columns)**
 - Footer first column
 - Footer second column
 - Footer third column
 
-**Subfooter (3 columns)**
 - Subfooter first column
 - Subfooter second column
 - Subfooter third column
 
 ## Deployment
-
-### Installation
 
 1. **Clone the repository:**
    ```bash
