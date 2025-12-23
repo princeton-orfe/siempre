@@ -35,7 +35,7 @@ The system uses CSS custom properties (variables), so all colors update dynamica
 
 ## Footer and Subfooter
 
-This theme includes footer and subfooter regions styled similar to the Princeton ORFE website.
+This theme includes footer and subfooter regions in 3-column sets.
 
 ### Regions Available
 
