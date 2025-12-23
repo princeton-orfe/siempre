@@ -28,4 +28,126 @@
   margin: 1em;
 }
 
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  /* --color-neutral-85 */
+  border-top: 5px solid #e77500;
+  /* --color-brand-70 Princeton orange */
+  color: #ffffff;
+  padding: 2rem 0;
+}
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #e77500;
+  /* Princeton orange */
+  text-decoration: underline;
+}
+.footer h2.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.footer figure .link-purpose-icon {
+  display: none;
+}
+.footer .region-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .footer .region-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Subfooter Styles */
+.subfooter {
+  background-color: #1d1d1d;
+  /* --color-neutral-90 */
+  color: #cccccc;
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+}
+.subfooter .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.subfooter .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .subfooter .row {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+.subfooter a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.subfooter a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.subfooter .subfooter-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .subfooter .subfooter-links ul {
+    justify-content: center;
+  }
+}
+.subfooter .subfooter-links li:not(:last-child)::after {
+  content: "|";
+  margin-left: 1rem;
+  color: #666666;
+}
+.subfooter .copyright-text {
+  text-align: center;
+  margin: 0;
+}
+.subfooter .col-md-4:last-child {
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .subfooter .col-md-4:last-child {
+    text-align: center;
+  }
+}
+.subfooter .col-md-4 img {
+  max-width: 120px;
+  height: auto;
+}
+.subfooter .pu-logo,
+.subfooter .no-border {
+  display: inline-block;
+  border: none;
+}
+
 /*# sourceMappingURL=siempre.css.map */
