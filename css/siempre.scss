@@ -176,8 +176,9 @@
 		}
 
 		img {
-			max-width: 120px;
-			height: auto;
+			filter: brightness(0) invert(1);
+			width: 186px;
+			height: 56px;
 		}
 	}
 
@@ -189,12 +190,5 @@
 	ul {
 		list-style: none;
 		padding-left: 0;
-	}
-
-	// Make Princeton logo all white
-	svg {
-		path, .a, .b, .c {
-			fill: #ffffff !important;
-		}
 	}
 }

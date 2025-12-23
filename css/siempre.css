@@ -159,8 +159,9 @@
   }
 }
 .subfooter .col-md-4 img {
-  max-width: 120px;
-  height: auto;
+  filter: brightness(0) invert(1);
+  width: 186px;
+  height: 56px;
 }
 .subfooter .pu-logo,
 .subfooter .no-border {
@@ -170,12 +171,6 @@
 .subfooter ul {
   list-style: none;
   padding-left: 0;
-}
-.subfooter svg path,
-.subfooter svg .a,
-.subfooter svg .b,
-.subfooter svg .c {
-  fill: #ffffff !important;
 }
 
 /*# sourceMappingURL=siempre.css.map */
