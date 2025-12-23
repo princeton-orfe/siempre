@@ -36,7 +36,7 @@ main.main-content {
 
 .breadcrumb__item {
 	line-height: 2rem;
-	border-bottom: 2px solid #003ecc;
+	border-bottom: 2px solid var(--siempre-accent, #003ecc);
 }
 
 .view-currently-logged-in-as {
@@ -45,6 +45,49 @@ main.main-content {
 
 .csv-feed.views-data-export-feed {
 	margin: 1em;
+}
+
+/* Accent color usage for links and UI elements */
+a {
+	color: var(--siempre-accent, #0036b1);
+
+	&:hover,
+	&:focus {
+		color: var(--siempre-accent-dark, #002780);
+	}
+
+	&:visited {
+		color: var(--siempre-accent-darker, #001a50);
+	}
+}
+
+/* Menu and navigation backgrounds */
+.toolbar-bar,
+.toolbar-menu-administration {
+	background-color: var(--siempre-accent, #0036b1);
+}
+
+/* Views field specific styling */
+td.views-field-field-submission-report-type a {
+	color: var(--siempre-accent-light, #1a4dc4);
+
+	&:hover,
+	&:focus {
+		color: var(--siempre-accent, #0036b1);
+	}
+}
+
+/* Button accent colors */
+.button--primary,
+input[type="submit"] {
+	background-color: var(--siempre-accent, #0036b1);
+	border-color: var(--siempre-accent-dark, #002780);
+
+	&:hover,
+	&:focus {
+		background-color: var(--siempre-accent-dark, #002780);
+		border-color: var(--siempre-accent-darker, #001a50);
+	}
 }
 
 /* Footer Styles */
