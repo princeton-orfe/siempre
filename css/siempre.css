@@ -1,3 +1,19 @@
+/* Sticky footer layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.main-content {
+  flex: 1 0 auto;
+}
+
 .field--name-field-submission-file .field__label {
   font-size: 2em;
 }
@@ -30,12 +46,12 @@
 
 /* Footer Styles */
 .footer {
-  background-color: #333;
-  /* --color-neutral-85 */
-  border-top: 5px solid #e77500;
-  /* --color-brand-70 Princeton orange */
+  background-color: #333; /* --color-neutral-85 */
+  border-top: 5px solid #e77500; /* --color-brand-70 Princeton orange */
   color: #ffffff;
   padding: 2rem 0;
+  width: 100%;
+  flex-shrink: 0;
 }
 .footer .container {
   max-width: 1200px;
@@ -47,8 +63,7 @@
   text-decoration: none;
 }
 .footer a:hover {
-  color: #e77500;
-  /* Princeton orange */
+  color: #e77500; /* Princeton orange */
   text-decoration: underline;
 }
 .footer h2.sr-only {
@@ -93,11 +108,12 @@
 
 /* Subfooter Styles */
 .subfooter {
-  background-color: #1d1d1d;
-  /* --color-neutral-90 */
+  background-color: #1d1d1d; /* --color-neutral-90 */
   color: #cccccc;
   padding: 1.5rem 0;
   font-size: 0.875rem;
+  width: 100%;
+  flex-shrink: 0;
 }
 .subfooter .container {
   max-width: 1200px;
@@ -163,8 +179,7 @@
   width: 186px;
   height: 56px;
 }
-.subfooter .pu-logo,
-.subfooter .no-border {
+.subfooter .pu-logo, .subfooter .no-border {
   display: inline-block;
   border: none;
 }

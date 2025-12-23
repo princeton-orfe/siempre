@@ -1,3 +1,19 @@
+/* Sticky footer layout */
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.layout-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main.main-content {
+	flex: 1 0 auto;
+}
+
 .field--name-field-submission-file {
 	.field__label
 		{
@@ -37,6 +53,8 @@
 	border-top: 5px solid #e77500; /* --color-brand-70 Princeton orange */
 	color: #ffffff;
 	padding: 2rem 0;
+	width: 100%;
+	flex-shrink: 0;
 
 	.container {
 		max-width: 1200px;
@@ -104,6 +122,8 @@
 	color: #cccccc;
 	padding: 1.5rem 0;
 	font-size: 0.875rem;
+	width: 100%;
+	flex-shrink: 0;
 
 	.container {
 		max-width: 1200px;
