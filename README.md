@@ -62,16 +62,24 @@ When creating custom blocks for the subfooter:
 
 **Subfooter Third Column** - Logo block:
 ```html
-<a href="https://yoursite.edu" class="no-border" title="Your Organization">
-  <img src="/path/to/logo.svg" alt="Your Organization">
+<a href="https://princeton.edu" class="no-border" title="Princeton University">
+  <img src="/themes/custom/siempre/images/pu-logo-stacked.svg" alt="Princeton University">
 </a>
 ```
+
+Note: The Princeton logo SVG (`images/pu-logo-stacked.svg`) will automatically display in all white in the subfooter.
 
 ### Styling
 
 The footer and subfooter are styled to match the Princeton ORFE website:
 - **Footer**: Dark background (#333), 5px Princeton orange (#e77500) top border, white text
+  - Middle column is center-aligned on wide screens
+  - List bullets are removed
 - **Subfooter**: Slightly darker background (#1d1d1d), light gray text (#ccc)
+  - Middle column is center-aligned
+  - Right column is right-aligned
+  - List bullets are removed
+  - Princeton logo displays in white
 - Princeton orange (#e77500) hover state for links
 - Responsive grid layouts that stack on mobile devices
 - Proper spacing and typography matching the Princeton design system

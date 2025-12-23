@@ -83,6 +83,19 @@
 	.footer-column {
 		/* Column styling */
 	}
+
+	.footer-column--second {
+		text-align: center;
+
+		@media (max-width: 768px) {
+			text-align: left;
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
 }
 
 /* Subfooter Styles */
@@ -150,6 +163,10 @@
 	}
 
 	.col-md-4 {
+		&:nth-child(2) {
+			text-align: center;
+		}
+
 		&:last-child {
 			text-align: right;
 
@@ -167,5 +184,17 @@
 	.pu-logo, .no-border {
 		display: inline-block;
 		border: none;
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	// Make Princeton logo all white
+	svg {
+		path, .a, .b, .c {
+			fill: #ffffff !important;
+		}
 	}
 }

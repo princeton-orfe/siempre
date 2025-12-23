@@ -78,6 +78,18 @@
 .footer .footer-column {
   /* Column styling */
 }
+.footer .footer-column--second {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .footer .footer-column--second {
+    text-align: left;
+  }
+}
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
 
 /* Subfooter Styles */
 .subfooter {
@@ -135,6 +147,9 @@
   text-align: center;
   margin: 0;
 }
+.subfooter .col-md-4:nth-child(2) {
+  text-align: center;
+}
 .subfooter .col-md-4:last-child {
   text-align: right;
 }
@@ -151,6 +166,16 @@
 .subfooter .no-border {
   display: inline-block;
   border: none;
+}
+.subfooter ul {
+  list-style: none;
+  padding-left: 0;
+}
+.subfooter svg path,
+.subfooter svg .a,
+.subfooter svg .b,
+.subfooter svg .c {
+  fill: #ffffff !important;
 }
 
 /*# sourceMappingURL=siempre.css.map */
