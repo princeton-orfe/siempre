@@ -72,14 +72,29 @@ td.views-field-field-submission-report-type a:hover, td.views-field-field-submis
 /* Button accent colors */
 .button--primary,
 input[type=submit] {
-  background-color: var(--siempre-accent, #0036b1);
-  border-color: var(--siempre-accent-dark, #002780);
+  background-color: var(--siempre-accent, #0036b1) !important;
+  border-color: var(--siempre-accent-dark, #002780) !important;
 }
 .button--primary:hover, .button--primary:focus,
 input[type=submit]:hover,
 input[type=submit]:focus {
-  background-color: var(--siempre-accent-dark, #002780);
-  border-color: var(--siempre-accent-darker, #001a50);
+  background-color: var(--siempre-accent-dark, #002780) !important;
+  border-color: var(--siempre-accent-darker, #001a50) !important;
+}
+
+/* Site branding - override hardcoded colors */
+.site-name a {
+  color: var(--siempre-accent, #0036b1) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+}
+.site-name a:hover, .site-name a:focus {
+  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+}
+
+/* Main menu - override hardcoded colors */
+ul.menu {
+  background-color: var(--siempre-accent, #0036b1) !important;
+  box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15)) !important;
 }
 
 /* Footer Styles */

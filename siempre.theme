@@ -23,6 +23,9 @@ function siempre_preprocess_html(&$variables) {
       --siempre-accent-lighter: {$colors['lighter']};
       --siempre-accent-dark: {$colors['dark']};
       --siempre-accent-darker: {$colors['darker']};
+      --siempre-accent-bg-light: {$colors['rgba_5']};
+      --siempre-accent-bg-medium: {$colors['rgba_10']};
+      --siempre-accent-shadow: {$colors['rgba_15']};
     }
   ";
 
@@ -61,6 +64,9 @@ function _siempre_calculate_color_variants($hex) {
     'lighter' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 20)),
     'dark' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], max(0, $hsl['l'] - 10)),
     'darker' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], max(0, $hsl['l'] - 20)),
+    'rgba_5' => "rgba({$r}, {$g}, {$b}, 0.05)",
+    'rgba_10' => "rgba({$r}, {$g}, {$b}, 0.10)",
+    'rgba_15' => "rgba({$r}, {$g}, {$b}, 0.15)",
   ];
 
   return $variants;
