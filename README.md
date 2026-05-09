@@ -26,7 +26,6 @@ The accent color system affects:
 - All standard links (a tags)
 - Breadcrumb item borders
 - Menu and toolbar backgrounds (.toolbar-bar, .toolbar-menu-administration)
-- Views field links (e.g., td.views-field-field-submission-report-type a)
 - Primary buttons and submit inputs
 - Link hover and focus states
 - Visited link colors

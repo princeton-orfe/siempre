@@ -83,46 +83,6 @@ table.views-view-table td a,
 	}
 }
 
-/* Views field specific styling - Report type badges (td only, not th headers) */
-td.views-field-field-submission-report-type {
-	&.final-thesis a {
-		background-color: var(--siempre-accent, rgb(0,54,177)) !important;
-		color: #fff !important;
-	}
-
-	&.interim-spring-report a {
-		background-color: var(--siempre-accent-medium, rgb(30,85,195)) !important;
-		color: #fff !important;
-	}
-
-	&.final-fall-report a {
-		background-color: var(--siempre-accent-light, rgb(65,115,210)) !important;
-		color: #fff !important;
-	}
-
-	&.midterm-report a {
-		background-color: var(--siempre-accent-lighter, rgb(116,156,230)) !important;
-		color: #fff !important;
-	}
-
-	&.prospectus-report a {
-		background-color: var(--siempre-accent-lightest, rgb(116,156,230)) !important;
-		color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
-	}
-
-	&.final-thesis,
-	&.interim-spring-report,
-	&.final-fall-report,
-	&.midterm-report,
-	&.prospectus-report {
-		a:hover,
-		a:focus {
-			transform: translateY(-2px) !important;
-			box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important;
-		}
-	}
-}
-
 /* Button accent colors */
 .button--primary,
 input[type="submit"] {
