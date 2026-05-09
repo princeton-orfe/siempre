@@ -68,8 +68,10 @@ table.views-view-table td a,
   color: var(--siempre-accent, #0036b1);
 }
 .views-table td a:hover, .views-table td a:focus,
-table.views-view-table td a:hover, table.views-view-table td a:focus,
-.view-content table td a:hover, .view-content table td a:focus {
+table.views-view-table td a:hover,
+table.views-view-table td a:focus,
+.view-content table td a:hover,
+.view-content table td a:focus {
   color: var(--siempre-accent-dark, #002780);
 }
 .views-table td a:visited,
