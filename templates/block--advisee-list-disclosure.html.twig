@@ -3,10 +3,15 @@
  * @file
  * Siempre override for the "List of Advisee(s)" Views block.
  *
+ * Selected via the custom `block__advisee_list_disclosure` suggestion
+ * registered in siempre_theme_suggestions_block_alter() — done that way
+ * because Drupal's auto-generated `block--views-block--…` filename for
+ * this block is fiddly to spell and Twig debug is unavailable on this
+ * site to verify it.
+ *
  * Wraps the block label and content in a native <details>/<summary> so
  * the list is collapsible. The disclosure triangle is provided by the
- * browser; omitting the `open` attribute on <details> keeps it collapsed
- * by default.
+ * browser; omitting the `open` attribute keeps it collapsed by default.
  */
 #}
 {%
