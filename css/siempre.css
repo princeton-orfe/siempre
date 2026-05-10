@@ -354,7 +354,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 /* Hide the default Page Title block on report nodes; the custom H1 is
    provided by templates/node--report--full.html.twig. */
 .page-node-type-report .block-page-title-block {
-  display: none;
+  display: none !important;
 }
 
 /*# sourceMappingURL=siempre.css.map */

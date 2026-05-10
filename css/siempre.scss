@@ -29,7 +29,7 @@ main.main-content {
 /* Hide the default Page Title block on report nodes; the custom H1 is
    provided by templates/node--report--full.html.twig. */
 .page-node-type-report .block-page-title-block {
-	display: none;
+	display: none !important;
 }
 
 .node--type-report .node__content .node__links, .comment__meta>a, .comment .content h3 {

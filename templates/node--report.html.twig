@@ -30,14 +30,19 @@
   {% set full_name = author.getDisplayName() %}
 {% endif %}
 
-{# Human-readable label for the report type field, regardless of field type. #}
-{% set report_type = content.field_submission_report_type|render|striptags|trim %}
+{# Human-readable label for the report type. Read the field directly from the
+   entity (rather than from `content`) so this works even when the field is
+   disabled in Manage Display. For list_string fields, look the stored value
+   up in allowed_values to get the label, falling back to the raw value. #}
+{% set raw_type = node.field_submission_report_type.value %}
+{% set allowed = node.field_submission_report_type.getFieldDefinition.getSetting('allowed_values') %}
+{% set report_type = allowed[raw_type]|default(raw_type) %}
 
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
   <h1{{ title_attributes.addClass('node__title') }}>
-    {{ full_name }}'s {{ report_type }} Submission
+    {{ full_name }}'s{% if report_type %} {{ report_type }}{% endif %} Submission
   </h1>
   {{ title_suffix }}
 
