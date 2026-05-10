@@ -43,65 +43,58 @@ main.main-content {
 	color: gray;
 }
 
-/* "List of Advisee(s)" view block — improve legibility of the name grid:
-   set the help text apart, give each row breathing room and a divider,
-   make links visibly clickable, and let the 4-column grid reflow on
-   narrow viewports (overriding the inline width:25% set by Views). */
+/* "List of Advisee(s)" view block — compact single-flow grid.
+   Flatten the per-row wrappers with display:contents so every cell
+   participates in one CSS Grid on .views-view-grid. This avoids the
+   awkward per-row wrap that produced ragged half-rows when the viewport
+   shrank, and keeps cells reflowing uniformly across breakpoints. */
 .view-id-list_of_advisee_s_ {
 	.view-header {
-		margin-bottom: 1em;
+		margin-bottom: 0.4em;
 		color: #555;
-		font-size: 0.9em;
+		font-size: 0.85em;
 		font-style: italic;
-		line-height: 1.5;
+		line-height: 1.4;
 	}
 
 	.views-view-grid {
-		border-top: 1px solid #e6e6e6;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		column-gap: 1em;
+		row-gap: 0.1em;
 	}
 
 	.views-row {
-		display: flex;
-		flex-wrap: wrap;
-		border-bottom: 1px solid #e6e6e6;
-		padding: 0.5em 0;
+		display: contents;
 	}
 
 	.views-col {
-		padding: 0.35em 0.75em 0.35em 0;
-		line-height: 1.5;
-		font-size: 1.0625rem;
+		/* Override the inline style="width: 25%;" Views injects on each
+		   cell so it lays out as a real grid item. */
+		width: auto !important;
+		padding: 0.05em 0;
+		font-size: 0.95rem;
+		line-height: 1.35;
 
 		a {
-			display: inline-block;
-			padding: 0.15em 0;
 			color: var(--siempre-accent, #0036b1);
 			text-decoration: none;
 
 			&:hover,
 			&:focus {
-				color: var(--siempre-accent-darker, #002280);
 				text-decoration: underline;
 			}
 		}
 	}
 
-	/* Override the inline style="width: 25%;" Views applies per cell so
-	   the grid collapses gracefully on narrower screens. */
 	@media (max-width: 900px) {
-		.views-col[style] {
-			width: 33.3333% !important;
-		}
+		.views-view-grid { grid-template-columns: repeat(3, 1fr); }
 	}
 	@media (max-width: 640px) {
-		.views-col[style] {
-			width: 50% !important;
-		}
+		.views-view-grid { grid-template-columns: repeat(2, 1fr); }
 	}
 	@media (max-width: 420px) {
-		.views-col[style] {
-			width: 100% !important;
-		}
+		.views-view-grid { grid-template-columns: 1fr; }
 	}
 }
 
