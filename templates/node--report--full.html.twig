@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Siempre override for the "report" content type, full view mode.
+ *
+ * Renders an H1 of the form
+ *   "First Last's <Report Type> Submission"
+ * built from the node author's user-profile fields and the node's
+ * field_submission_report_type. Falls back to the account display name
+ * if first/last are empty.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{# Author user entity and name parts. #}
+{% set author = node.uid.entity %}
+{% set first_name = author.field_account_first_name.value|default('') %}
+{% set last_name  = author.field_account_last_name.value|default('') %}
+{% set full_name  = (first_name ~ ' ' ~ last_name)|trim %}
+{% if full_name is empty %}
+  {% set full_name = author.getDisplayName() %}
+{% endif %}
+
+{# Human-readable label for the report type field, regardless of field type. #}
+{% set report_type = content.field_submission_report_type|render|striptags|trim %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  <h1{{ title_attributes.addClass('node__title') }}>
+    {{ full_name }}'s {{ report_type }} Submission
+  </h1>
+  {{ title_suffix }}
+
+  <div{{ content_attributes.addClass('node__content') }}>
+    {# Don't re-print the report type or the title field below the H1. #}
+    {{ content|without('title', 'field_submission_report_type') }}
+  </div>
+
+</article>
