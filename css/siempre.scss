@@ -66,6 +66,14 @@ main.main-content {
 
 	.views-row {
 		display: contents;
+
+		/* .views-row carries .clearfix, whose ::after pseudo-element would
+		   otherwise become a grid item under display:contents and offset
+		   every row after the first by one column. */
+		&::before,
+		&::after {
+			content: none;
+		}
 	}
 
 	.views-col {

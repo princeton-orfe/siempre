@@ -61,6 +61,13 @@ main.main-content {
 .view-id-list_of_advisee_s_ .views-row {
   display: contents;
 }
+/* .views-row carries .clearfix, whose ::after pseudo-element would
+   otherwise become a grid item under display:contents and offset every
+   row after the first by one column. */
+.view-id-list_of_advisee_s_ .views-row::before,
+.view-id-list_of_advisee_s_ .views-row::after {
+  content: none;
+}
 .view-id-list_of_advisee_s_ .views-col {
   width: auto !important;
   padding: 0.05em 0;
