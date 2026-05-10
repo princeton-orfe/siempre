@@ -6,6 +6,56 @@
  */
 
 /**
+ * Implements hook_preprocess_page_title().
+ *
+ * Replace the page title with "First Last's <Report Type> Submission" on every
+ * route that has a report node in context (view, edit, delete, revisions), so
+ * the H1 is consistent across all of them. The author's first/last names come
+ * from user-profile fields field_account_first_name / field_account_last_name,
+ * and the report type label comes from field_submission_report_type's
+ * allowed_values, so this works regardless of Manage Display configuration.
+ */
+function siempre_preprocess_page_title(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
+  if (!$node instanceof \Drupal\node\NodeInterface) {
+    $revision = $route_match->getParameter('node_revision');
+    if ($revision instanceof \Drupal\node\NodeInterface) {
+      $node = $revision;
+    }
+  }
+  if (!$node instanceof \Drupal\node\NodeInterface || $node->bundle() !== 'report') {
+    return;
+  }
+
+  $author = $node->getOwner();
+  $first = $author && $author->hasField('field_account_first_name')
+    ? trim((string) $author->get('field_account_first_name')->value)
+    : '';
+  $last = $author && $author->hasField('field_account_last_name')
+    ? trim((string) $author->get('field_account_last_name')->value)
+    : '';
+  $full_name = trim("$first $last");
+  if ($full_name === '' && $author) {
+    $full_name = $author->getDisplayName();
+  }
+
+  $report_type = '';
+  if ($node->hasField('field_submission_report_type')
+      && !$node->get('field_submission_report_type')->isEmpty()) {
+    $raw = $node->get('field_submission_report_type')->value;
+    $allowed = $node->get('field_submission_report_type')
+      ->getFieldDefinition()
+      ->getSetting('allowed_values');
+    $report_type = $allowed[$raw] ?? $raw;
+  }
+
+  $variables['title'] = $full_name . "'s"
+    . ($report_type !== '' ? ' ' . $report_type : '')
+    . ' Submission';
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function siempre_preprocess_html(&$variables) {
