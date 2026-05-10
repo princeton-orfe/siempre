@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Siempre override for the "List of Advisee(s)" Views block.
+ *
+ * Wraps the block label and content in a native <details>/<summary> so
+ * the list is collapsible. The disclosure triangle is provided by the
+ * browser; omitting the `open` attribute on <details> keeps it collapsed
+ * by default.
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'block--collapsible',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <details class="advisee-list-disclosure">
+    {% if label %}
+      <summary class="advisee-list-disclosure__summary">
+        {{ title_prefix }}
+        <h2{{ title_attributes.addClass('advisee-list-disclosure__title') }}>{{ label }}</h2>
+        {{ title_suffix }}
+      </summary>
+    {% endif %}
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </details>
+</div>

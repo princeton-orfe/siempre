@@ -43,6 +43,19 @@ main.main-content {
 	color: gray;
 }
 
+/* Collapsible wrapper around the "List of Advisee(s)" view block.
+   The native <details>/<summary> in the block template override supplies
+   the disclosure triangle; we just need the H2 to sit inline with it
+   and the summary to look clickable. */
+.advisee-list-disclosure > summary {
+	cursor: pointer;
+	user-select: none;
+}
+.advisee-list-disclosure > summary > h2 {
+	display: inline;
+	margin: 0;
+}
+
 /* "List of Advisee(s)" view block — compact single-flow grid.
    Flatten the per-row wrappers with display:contents so every cell
    participates in one CSS Grid on .views-view-grid. This avoids the
