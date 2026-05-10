@@ -44,16 +44,40 @@ main.main-content {
 }
 
 /* Collapsible wrapper around the "List of Advisee(s)" view block.
-   The native <details>/<summary> in the block template override supplies
-   the disclosure triangle; we just need the H2 to sit inline with it
-   and the summary to look clickable. */
+   We hide the browser-supplied disclosure marker and draw our own via
+   ::before so we can resize and theme it. Flexbox on the summary lines
+   the triangle up vertically with the H2; a small negative translateY
+   raises it to sit slightly above the line midpoint. */
 .advisee-list-disclosure > summary {
+	display: flex;
+	align-items: center;
+	gap: 0.35em;
+	padding: 0;
 	cursor: pointer;
 	user-select: none;
+	list-style: none; /* Hides marker in Firefox. */
+
+	&::-webkit-details-marker {
+		display: none; /* Hides marker in older Chromium/Safari. */
+	}
+
+	&::before {
+		content: "▶";
+		font-size: 1.25em;
+		line-height: 1;
+		color: var(--siempre-accent, #0036b1);
+		transform: translateY(-0.08em);
+		transition: transform 0.15s ease;
+	}
 }
+
 .advisee-list-disclosure > summary > h2 {
 	display: inline;
 	margin: 0;
+}
+
+.advisee-list-disclosure[open] > summary::before {
+	transform: translateY(-0.08em) rotate(90deg);
 }
 
 /* "List of Advisee(s)" view block — compact single-flow grid.
