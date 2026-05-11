@@ -132,7 +132,16 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
   $form['grade_help'] = [
     '#type' => 'item',
     '#title' => t('Grade'),
-    '#description' => t('Collection of a letter or number grade is at the discretion of the instructor or program administrator. Please inquire as to which to enter as you may enter either a letter or a number, but not both. This field facilitates conveyance of performance feedback between instructors and students and does not constitute an official record.'),
+    // Description is rendered as a render array so the paragraph break
+    // survives Drupal's HTML escaping of form #description strings.
+    '#description' => [
+      '#type' => 'inline_template',
+      '#template' => '<p>{{ first }}</p><p>{{ second }}</p>',
+      '#context' => [
+        'first' => t('Collection of a either a Letter or Numeric Grade is at the discretion of the instructor; only one or the other is permitted, not both.'),
+        'second' => t('A Grade entered here is to provide performance feedback to advisees. This does not constitute an official record.'),
+      ],
+    ],
     '#weight' => $grade_weight - 0.5,
     '#prefix' => '<div class="grade-region">',
   ];
