@@ -27,13 +27,44 @@ main.main-content {
   display: none;
 }
 
+/* Subtle breadcrumb: muted gray inline trail with a small chevron
+   separator. Hover surfaces the accent color so the trail still feels
+   alive without dominating the page chrome. */
 .breadcrumb {
-  font-size: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  padding: 0.4em 0;
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .breadcrumb__item {
-  line-height: 2rem;
-  border-bottom: 2px solid var(--siempre-accent, #003ecc);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+  border: none;
+}
+
+.breadcrumb__item + .breadcrumb__item::before {
+  content: "\203A"; /* › */
+  margin: 0 0.5em;
+  color: #b0b4bb;
+}
+
+.breadcrumb__link {
+  color: #6b7280;
+  text-decoration: none;
+}
+.breadcrumb__link:hover,
+.breadcrumb__link:focus {
+  color: var(--siempre-accent, #0036b1);
+  text-decoration: underline;
 }
 
 .view-currently-logged-in-as {
