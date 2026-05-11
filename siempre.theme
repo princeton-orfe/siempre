@@ -85,6 +85,30 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
         ->format($entity->getCreatedTime(), 'custom', 'n/d/Y \a\t g:i a'),
       '#weight' => 10,
     ];
+
+    // Surface the user who saved the most recent revision, mirroring
+    // the first-name/last-name fallback used elsewhere. Sits next to
+    // "Last saved change" so the pair reads "by X on DATE".
+    $revision_user = $entity->getRevisionUser();
+    if ($revision_user instanceof \Drupal\user\UserInterface) {
+      $rev_first = $revision_user->hasField('field_account_first_name')
+        ? trim((string) $revision_user->get('field_account_first_name')->value)
+        : '';
+      $rev_last = $revision_user->hasField('field_account_last_name')
+        ? trim((string) $revision_user->get('field_account_last_name')->value)
+        : '';
+      $rev_name = trim("$rev_first $rev_last");
+      if ($rev_name === '') {
+        $rev_name = $revision_user->getDisplayName();
+      }
+      $form['meta']['last_saved_by'] = [
+        '#type' => 'item',
+        '#wrapper_attributes' => ['class' => ['entity-meta__last-saved-by']],
+        '#title' => t('Last saved by'),
+        '#markup' => \Drupal\Component\Utility\Html::escape($rev_name),
+        '#weight' => 25,
+      ];
+    }
   }
   if (isset($form['meta']['author']) && ($owner = $entity->getOwner())) {
     $first = $owner->hasField('field_account_first_name')
