@@ -40,6 +40,90 @@ main.main-content {
   color: gray;
 }
 
+/* Submission Comments: layered styling that distinguishes the section
+   heading, per-comment metadata footer, comment title, body, and
+   reply actions. Each comment is a soft card with a left accent stripe
+   that doubles as a threading indicator when comments are nested. */
+.field--name-field-submission-comments > h2.title {
+  margin: 1.5em 0 0.75em;
+  padding-bottom: 0.4em;
+  font-size: 1.4em;
+  border-bottom: 2px solid var(--siempre-accent, #0036b1);
+}
+.field--name-field-submission-comments > h2.comment-form__title {
+  margin-top: 2em;
+  padding-bottom: 0.3em;
+  font-size: 1.2em;
+  border-bottom: 1px solid #ccc;
+}
+.field--name-field-submission-comments .comment {
+  margin: 1em 0;
+  padding: 0.75em 1em 0.9em;
+  background-color: #fafbfc;
+  border: 1px solid #e3e6ea;
+  border-left: 3px solid var(--siempre-accent, #0036b1);
+  border-radius: 0 4px 4px 0;
+}
+.field--name-field-submission-comments .comment .comment__meta {
+  margin: 0 0 0.75em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid #e8eaed;
+  font-size: 0.875em;
+  color: #555;
+}
+.field--name-field-submission-comments .comment .comment__meta .comment__submitted {
+  display: inline;
+  margin: 0;
+}
+.field--name-field-submission-comments .comment .comment__meta .comment__submitted + a {
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+  border-left: 1px solid #ccc;
+}
+.field--name-field-submission-comments .comment .content > h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.field--name-field-submission-comments .comment .content > h3 a.permalink {
+  color: inherit;
+  text-decoration: none;
+}
+.field--name-field-submission-comments .comment .content > h3 a.permalink:hover,
+.field--name-field-submission-comments .comment .content > h3 a.permalink:focus {
+  text-decoration: underline;
+}
+.field--name-field-submission-comments .comment .content .field--name-comment-body .field__label {
+  display: none;
+}
+.field--name-field-submission-comments .comment .content .field--name-comment-body .field__item {
+  line-height: 1.5;
+}
+.field--name-field-submission-comments .comment .content .field--name-comment-body .field__item p:first-child {
+  margin-top: 0;
+}
+.field--name-field-submission-comments .comment .content .field--name-comment-body .field__item p:last-child {
+  margin-bottom: 0;
+}
+.field--name-field-submission-comments .comment .content .links.inline {
+  margin: 0.75em 0 0;
+  padding-top: 0.5em;
+  border-top: 1px dashed #e8eaed;
+  font-size: 0.9em;
+}
+.field--name-field-submission-comments .comment.by-node-author {
+  border-left-color: #2e7d32;
+}
+.field--name-field-submission-comments .comment.by-viewer {
+  background-color: #f0f7ff;
+}
+.field--name-field-submission-comments .indented {
+  margin: -0.25em 0 0 1.5em;
+  padding-left: 1em;
+  border-left: 2px dashed #d0d5dc;
+}
+
 /* Hide the primary tabs (View / Edit / Delete / Revisions) on every
    report-node route. Drupal puts a `page-node-type-report` class on
    <body> for view, edit, delete, and revisions pages of report nodes,

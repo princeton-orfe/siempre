@@ -43,6 +43,123 @@ main.main-content {
 	color: gray;
 }
 
+/* Submission Comments: layered styling that distinguishes the section
+   heading, per-comment metadata footer, comment title, body, and
+   reply actions. Each comment is a soft card with a left accent stripe
+   that doubles as a threading indicator when comments are nested. */
+.field--name-field-submission-comments {
+
+	/* "Submission Comments" section heading. */
+	> h2.title {
+		margin: 1.5em 0 0.75em;
+		padding-bottom: 0.4em;
+		font-size: 1.4em;
+		border-bottom: 2px solid var(--siempre-accent, #0036b1);
+	}
+
+	/* "Add new comment" heading at the bottom. */
+	> h2.comment-form__title {
+		margin-top: 2em;
+		padding-bottom: 0.3em;
+		font-size: 1.2em;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.comment {
+		margin: 1em 0;
+		padding: 0.75em 1em 0.9em;
+		background-color: #fafbfc;
+		border: 1px solid #e3e6ea;
+		border-left: 3px solid var(--siempre-accent, #0036b1);
+		border-radius: 0 4px 4px 0;
+
+		/* Metadata footer (Drupal puts <footer> ABOVE .content in the
+		   markup but calls it footer; we treat it as a header strip). */
+		.comment__meta {
+			margin: 0 0 0.75em;
+			padding-bottom: 0.4em;
+			border-bottom: 1px solid #e8eaed;
+			font-size: 0.875em;
+			color: #555;
+
+			.comment__submitted {
+				display: inline;
+				margin: 0;
+			}
+
+			.comment__submitted + a {
+				margin-left: 0.5em;
+				padding-left: 0.5em;
+				border-left: 1px solid #ccc;
+			}
+		}
+
+		.content {
+			/* Auto-generated comment title (truncated body preview). */
+			> h3 {
+				margin: 0 0 0.5em;
+				font-size: 1.05em;
+				font-weight: 600;
+				line-height: 1.3;
+
+				a.permalink {
+					color: inherit;
+					text-decoration: none;
+
+					&:hover,
+					&:focus {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			/* The comment body itself. */
+			.field--name-comment-body {
+				/* The "Comment" field label is redundant inside a comment. */
+				.field__label {
+					display: none;
+				}
+
+				.field__item {
+					line-height: 1.5;
+
+					p:first-child { margin-top: 0; }
+					p:last-child { margin-bottom: 0; }
+				}
+			}
+
+			/* Reply / Edit / Delete action links. */
+			.links.inline {
+				margin: 0.75em 0 0;
+				padding-top: 0.5em;
+				border-top: 1px dashed #e8eaed;
+				font-size: 0.9em;
+			}
+		}
+
+		/* Comments authored by the node's author (the student/submitter)
+		   get a green left stripe so it's instantly clear who's talking. */
+		&.by-node-author {
+			border-left-color: #2e7d32;
+		}
+
+		/* Comments authored by the current viewer get a faint tint so
+		   you can quickly find your own in the thread. */
+		&.by-viewer {
+			background-color: #f0f7ff;
+		}
+	}
+
+	/* Threaded replies. Drupal wraps nested comments in .indented.
+	   Stack the indent + dashed guide rail so multi-level threads stay
+	   legible. */
+	.indented {
+		margin: -0.25em 0 0 1.5em;
+		padding-left: 1em;
+		border-left: 2px dashed #d0d5dc;
+	}
+}
+
 /* Hide the primary tabs (View / Edit / Delete / Revisions) on every
    report-node route. Drupal puts a `page-node-type-report` class on
    <body> for view, edit, delete, and revisions pages of report nodes,
