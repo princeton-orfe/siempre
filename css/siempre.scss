@@ -1053,3 +1053,87 @@ td.views-field-field-gsr-puid a {
 .text-format-wrapper .filter-wrapper {
 	display: none;
 }
+
+/* Submission File on the edit form: re-skin the managed-file widget
+   so the PDF link mirrors the prominent download button used in the
+   view-mode (see .view-id-individual_submission_display rules above).
+   The icon, color, padding, and hover lift match. Form structure is
+   untouched — the Remove submit input still carries its drupal-ajax
+   wiring; only the visual layer changes. */
+.form-managed-file__main {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75em;
+}
+
+.form-managed-file .file {
+	display: inline-flex;
+	align-items: center;
+}
+
+.form-managed-file .file--mime-application-pdf a,
+.form-managed-file .file--application-pdf a {
+	display: inline-block;
+	position: relative;
+	padding: 0.65em 1.3em 0.65em 2.9em;
+	background-color: var(--siempre-accent, #0036b1);
+	color: #fff;
+	font-size: 1.02em;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.form-managed-file .file--mime-application-pdf a::before,
+.form-managed-file .file--application-pdf a::before {
+	content: "";
+	position: absolute;
+	left: 0.7em;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 1.4em;
+	height: 1.4em;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z'/></svg>");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.form-managed-file .file--mime-application-pdf a:hover,
+.form-managed-file .file--mime-application-pdf a:focus,
+.form-managed-file .file--application-pdf a:hover,
+.form-managed-file .file--application-pdf a:focus {
+	background-color: var(--siempre-accent-dark, #002780);
+	color: #fff;
+	text-decoration: none;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.form-managed-file .file__size {
+	margin-left: 0.5em;
+	color: #6b7280;
+	font-size: 0.9em;
+}
+
+/* De-emphasize the Remove button — it's destructive but should not
+   compete visually with the download. Outline-only with red-tinted
+   hover; no native button background. */
+.form-managed-file .remove-button {
+	background: transparent;
+	color: #b91c1c;
+	border: 1px solid #d1d5db;
+	padding: 0.45em 0.9em;
+	border-radius: 4px;
+	font-weight: 500;
+	text-transform: none;
+	box-shadow: none;
+}
+.form-managed-file .remove-button:hover,
+.form-managed-file .remove-button:focus {
+	background-color: #fef2f2;
+	border-color: #b91c1c;
+	color: #991b1b;
+	box-shadow: none;
+}
