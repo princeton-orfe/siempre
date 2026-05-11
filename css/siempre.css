@@ -953,6 +953,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 .form-managed-file .file--mime-application-pdf {
   display: inline-flex;
   align-items: stretch;
+  flex: 0 0 auto;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1029,7 +1030,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 }
 .form-managed-file .remove-button.button,
 .form-managed-file .form-managed-file__main .remove-button.button {
-  margin-left: auto !important;
+  flex: 0 0 auto !important;
   background-color: #fff !important;
   background-image: none !important;
   color: #b91c1c !important;
