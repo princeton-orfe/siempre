@@ -98,6 +98,72 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
 }
 
 /**
+ * Implements hook_preprocess_comment().
+ *
+ * For comments on report nodes, replace the default "Submitted by
+ * USERNAME on Mon, 12/15/2025 - 00:06" line with "Submitted by First
+ * Last on 5/09/2026 at 10:58 pm" — matching the metadata-sidebar and
+ * H1 conventions used elsewhere on the site.
+ */
+function siempre_preprocess_comment(array &$variables) {
+  /** @var \Drupal\comment\CommentInterface $comment */
+  $comment = $variables['comment'];
+
+  // Scope to comments on report nodes; other content types are left
+  // with Drupal's default rendering.
+  $parent = $comment->getCommentedEntity();
+  if (!$parent instanceof \Drupal\node\NodeInterface || $parent->bundle() !== 'report') {
+    return;
+  }
+
+  // Custom-format the comment timestamp.
+  $variables['created'] = \Drupal::service('date.formatter')
+    ->format($comment->getCreatedTime(), 'custom', 'n/d/Y \a\t g:i a');
+
+  // Swap the username for First Last when those user-profile fields
+  // are populated. Match Drupal's default link-vs-span pattern based
+  // on whether the viewer can access the user profile.
+  $owner = $comment->getOwner();
+  if ($owner) {
+    $first = $owner->hasField('field_account_first_name')
+      ? trim((string) $owner->get('field_account_first_name')->value)
+      : '';
+    $last = $owner->hasField('field_account_last_name')
+      ? trim((string) $owner->get('field_account_last_name')->value)
+      : '';
+    $full_name = trim("$first $last");
+
+    if ($full_name !== '') {
+      if (!$owner->isAnonymous() && $owner->access('view')) {
+        $author_build = [
+          '#type' => 'link',
+          '#title' => $full_name,
+          '#url' => $owner->toUrl(),
+          '#attributes' => [
+            'title' => t('View user profile.'),
+            'class' => ['username'],
+          ],
+        ];
+        $variables['author'] = \Drupal::service('renderer')->render($author_build);
+      }
+      else {
+        $variables['author'] = \Drupal\Core\Render\Markup::create(
+          '<span class="username">' . \Drupal\Component\Utility\Html::escape($full_name) . '</span>'
+        );
+      }
+    }
+  }
+
+  // template_preprocess_comment() already composed 'submitted' from
+  // the original author/created — rebuild it with the overridden
+  // values so the rendered line uses our format.
+  $variables['submitted'] = t('Submitted by @username on @datetime', [
+    '@username' => $variables['author'],
+    '@datetime' => $variables['created'],
+  ]);
+}
+
+/**
  * Implements hook_theme_suggestions_block_alter().
  *
  * Register a stable template suggestion for the "List of Advisee(s)" Views
