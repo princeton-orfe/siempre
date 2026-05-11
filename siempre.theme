@@ -106,9 +106,20 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
         '#wrapper_attributes' => ['class' => ['entity-meta__last-saved-by']],
         '#title' => t('Last saved by'),
         '#markup' => \Drupal\Component\Utility\Html::escape($rev_name),
-        '#weight' => 25,
+        '#weight' => 21,
       ];
     }
+  }
+
+  // The revision_information section (Create new revision + log msg)
+  // can render inside the meta sidebar between our pinned items and
+  // shift "Last saved by" below it. Push it past the last pinned
+  // weight so the meta items stay grouped at the top.
+  if (isset($form['meta']['revision_information'])) {
+    $form['meta']['revision_information']['#weight'] = 50;
+  }
+  if (isset($form['revision_information'])) {
+    $form['revision_information']['#weight'] = 50;
   }
   if (isset($form['meta']['author']) && ($owner = $entity->getOwner())) {
     $first = $owner->hasField('field_account_first_name')
