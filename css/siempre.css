@@ -91,6 +91,14 @@ main.main-content {
   box-shadow: 0 1px 2px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15));
 }
 
+/* Replace Claro's variable-driven margin on details bodies with a
+   fixed compact margin at the breakpoint Claro switches at. */
+@media screen and (min-width: 40.0625rem) {
+  .claro-details__wrapper {
+    margin: 0.5em 1em;
+  }
+}
+
 .view-currently-logged-in-as {
   color: gray;
 }
@@ -491,7 +499,7 @@ main.main-content h2 {
    not the inner "Letter Grade" / "Numeric Grade" field labels. */
 .node-form .grade-region {
   margin: 1em 0;
-  padding: 0.75em 1em;
+  padding: 0.25em 1em;
   border-left: 3px solid var(--siempre-accent, #0036b1);
   background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
 }
