@@ -6,6 +6,36 @@
  */
 
 /**
+ * Implements hook_form_FORM_ID_alter() for user_form.
+ *
+ * The "Update photos" profile edit screen uses Drupal's form-display
+ * query parameter (?display=update_photos). Tag the form element with
+ * a scoping class so CSS can lay out that specific display as a
+ * profile-style card without affecting other user_form variants.
+ */
+function siempre_form_user_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $display = \Drupal::request()->query->get('display');
+  if ($display !== 'update_photos') {
+    return;
+  }
+  $form['#attributes']['class'][] = 'user-form--update-photos';
+
+  // Expose the account name as a read-only "NetID" item at the top of
+  // the right-hand column. Weight is negative so it lands above the
+  // first/last name fields; the grid template places it via grid-area.
+  $account = $form_state->getFormObject()->getEntity();
+  if ($account instanceof \Drupal\user\UserInterface) {
+    $form['netid'] = [
+      '#type' => 'item',
+      '#title' => t('NetID'),
+      '#markup' => \Drupal\Component\Utility\Html::escape($account->getAccountName()),
+      '#wrapper_attributes' => ['class' => ['user-form__netid']],
+      '#weight' => -10,
+    ];
+  }
+}
+
+/**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
  *
  * Report-node form customizations:
@@ -256,6 +286,27 @@ function siempre_theme_suggestions_block_alter(array &$suggestions, array $varia
  */
 function siempre_preprocess_page_title(&$variables) {
   $route_match = \Drupal::routeMatch();
+
+  // User edit-form routes: replace the username H1 with the user's
+  // first/last name when populated. Falls back to the default title
+  // (which Drupal sets to the account display name) when name fields
+  // are empty.
+  $user = $route_match->getParameter('user');
+  if ($user instanceof \Drupal\user\UserInterface
+      && $route_match->getRouteName() === 'entity.user.edit_form') {
+    $first = $user->hasField('field_account_first_name')
+      ? trim((string) $user->get('field_account_first_name')->value)
+      : '';
+    $last = $user->hasField('field_account_last_name')
+      ? trim((string) $user->get('field_account_last_name')->value)
+      : '';
+    $full_name = trim("$first $last");
+    if ($full_name !== '') {
+      $variables['title'] = $full_name;
+    }
+    return;
+  }
+
   $node = $route_match->getParameter('node');
   if (!$node instanceof \Drupal\node\NodeInterface) {
     $revision = $route_match->getParameter('node_revision');

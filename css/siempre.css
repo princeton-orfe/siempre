@@ -193,6 +193,140 @@ main.main-content {
   border-left: 2px dashed #d0d5dc;
 }
 
+/* Profile-editor layout for the "update_photos" user form display.
+   Scoping class is added by siempre_form_user_form_alter() when the
+   ?display=update_photos query param is present. Two columns at
+   wide widths: photo on the left, name+visibility fields stacked on
+   the right, actions full-width at the bottom. Hidden inputs are
+   display:none so they don't disturb the grid. */
+.user-form--update-photos {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "picture netid"
+    "picture firstname"
+    "picture lastname"
+    "picture showondisplay"
+    "actions actions";
+  gap: 1em 2em;
+  max-width: 720px;
+  margin: 1.5em auto;
+  padding: 1.5em;
+  background-color: #fff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  align-items: start;
+}
+.user-form--update-photos .field--name-user-picture {
+  grid-area: picture;
+}
+.user-form--update-photos .field--name-user-picture > details {
+  padding: 0;
+  border: none;
+  background: none;
+}
+.user-form--update-photos .field--name-user-picture > details > summary {
+  display: none;
+}
+.user-form--update-photos .field--name-user-picture .claro-details__wrapper {
+  padding: 0;
+}
+.user-form--update-photos .field--name-user-picture .form-managed-file__image-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.user-form--update-photos .field--name-user-picture .form-managed-file__main {
+  margin-top: 0.75em;
+  font-size: 0.85em;
+  color: #555;
+}
+.user-form--update-photos .field--name-user-picture .image-data__crop-wrapper {
+  margin-top: 0.75em;
+  font-size: 0.9em;
+}
+.user-form--update-photos .field--name-user-picture .form-item__description {
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: #666;
+  font-style: italic;
+}
+.user-form--update-photos .user-form__netid {
+  grid-area: netid;
+  padding: 0.4em 0.6em;
+  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
+  border-left: 3px solid var(--siempre-accent, #0036b1);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #222;
+}
+.user-form--update-photos .user-form__netid .form-item__label {
+  display: inline;
+  margin-right: 0.4em;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85em;
+}
+.user-form--update-photos .user-form__netid .form-item__label::after {
+  content: ":";
+}
+.user-form--update-photos .field--name-field-account-first-name {
+  grid-area: firstname;
+}
+.user-form--update-photos .field--name-field-account-last-name {
+  grid-area: lastname;
+}
+.user-form--update-photos .field--name-field-account-first-name input[type="text"],
+.user-form--update-photos .field--name-field-account-last-name input[type="text"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 1.05em;
+  padding: 0.5em 0.75em;
+}
+.user-form--update-photos .field--name-field-showondisplay {
+  grid-area: showondisplay;
+  margin-top: 0.75em;
+  padding-top: 0.75em;
+  border-top: 1px solid #eee;
+  font-size: 0.95em;
+}
+.user-form--update-photos .field--name-field-showondisplay .form-item__description {
+  margin-top: 0.25em;
+  color: #666;
+}
+.user-form--update-photos #edit-actions {
+  grid-area: actions;
+  margin-top: 0.75em;
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+@media (max-width: 600px) {
+  .user-form--update-photos {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "picture"
+      "netid"
+      "firstname"
+      "lastname"
+      "showondisplay"
+      "actions";
+  }
+  .user-form--update-photos .field--name-user-picture {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}
+
 /* Hide the primary tabs (View / Edit / Delete / Revisions) on every
    report-node route. Drupal puts a `page-node-type-report` class on
    <body> for view, edit, delete, and revisions pages of report nodes,
