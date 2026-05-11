@@ -6,6 +6,42 @@
  */
 
 /**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ *
+ * On report nodes, hide the duplicate per-field "Collection of a letter
+ * or number grade…" description on each grade field and show it once as
+ * a single help block above the Letter/Numeric Grade pair.
+ */
+function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $entity = $form_state->getFormObject()->getEntity();
+  if (!$entity instanceof \Drupal\node\NodeInterface || $entity->bundle() !== 'report') {
+    return;
+  }
+  if (!isset($form['field_submission_grade'])) {
+    return;
+  }
+
+  $grade_weight = $form['field_submission_grade']['#weight'] ?? 0;
+  $form['grade_help'] = [
+    '#type' => 'item',
+    '#title' => t('Grade'),
+    '#description' => t('Collection of a letter or number grade is at the discretion of the instructor or program administrator. Please inquire as to which to enter as you may enter either a letter or a number, but not both. This field facilitates conveyance of performance feedback between instructors and students and does not constitute an official record.'),
+    '#weight' => $grade_weight - 0.5,
+    '#prefix' => '<div class="grade-help-block">',
+    '#suffix' => '</div>',
+  ];
+
+  // Suppress the duplicate per-field descriptions now that the text
+  // lives in the consolidated help block above the pair.
+  if (isset($form['field_submission_grade']['widget']['#description'])) {
+    $form['field_submission_grade']['widget']['#description'] = '';
+  }
+  if (isset($form['field_numeric_grade']['widget'][0]['value']['#description'])) {
+    $form['field_numeric_grade']['widget'][0]['value']['#description'] = '';
+  }
+}
+
+/**
  * Implements hook_theme_suggestions_block_alter().
  *
  * Register a stable template suggestion for the "List of Advisee(s)" Views

@@ -49,7 +49,25 @@ main.main-content {
    ("INC", "A+", etc.). Override at all breakpoints to a compact width
    sized for the longest option plus the arrow. */
 .node-form .field--name-field-submission-grade .chosen-container {
-	width: 7em !important;
+	width: 9em !important;
+}
+
+/* Consolidated help block above the Grade fields, injected by
+   siempre_form_node_form_alter(). Framed with the theme accent. */
+.node-form .grade-help-block {
+	margin: 1em 0;
+	padding: 0.75em 1em;
+	border-left: 3px solid var(--siempre-accent, #0036b1);
+	background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
+}
+.node-form .grade-help-block .form-item__label {
+	font-weight: 600;
+}
+
+/* Hide the "Show row weights" toggle that Drupal adds above multi-item
+   tabledrag tables on node forms. Editors don't reorder by weight here. */
+.node-form .tabledrag-toggle-weight-wrapper {
+	display: none;
 }
 
 /* Report-form: lay Letter Grade and Numeric Grade side-by-side on
