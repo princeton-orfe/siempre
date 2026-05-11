@@ -40,7 +40,25 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
     }
   }
 
-  if (!isset($form['field_submission_grade'])) {
+  // The grade-help block and shaded wrapper only make sense when both
+  // grade fields are actually visible to this user. Drupal keeps the
+  // fields in the form array with #access = FALSE for roles that can't
+  // edit them, so isset() alone is insufficient. #access may be either
+  // a bool or an AccessResultInterface; handle both.
+  $grade_visible = isset($form['field_submission_grade'], $form['field_numeric_grade']);
+  foreach (['field_submission_grade', 'field_numeric_grade'] as $grade_field) {
+    if (!$grade_visible) {
+      break;
+    }
+    $access = $form[$grade_field]['#access'] ?? TRUE;
+    if ($access instanceof \Drupal\Core\Access\AccessResultInterface) {
+      $access = $access->isAllowed();
+    }
+    if (!$access) {
+      $grade_visible = FALSE;
+    }
+  }
+  if (!$grade_visible) {
     return;
   }
 
