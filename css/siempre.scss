@@ -1013,3 +1013,12 @@ td.views-field-field-gsr-puid a {
 	margin: 0;
 	padding: 0;
 }
+
+/* Hide the text-format chrome under #type => text_format fields: the
+   format-selector dropdown ("Text format: Basic HTML / Full HTML…"),
+   the "About text formats" help link, and the guidelines block.
+   Site-wide editorial decision — authors only see the editor itself. */
+.filter-wrapper,
+.text-format-wrapper .filter-wrapper {
+	display: none;
+}
