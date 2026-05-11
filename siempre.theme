@@ -120,9 +120,11 @@ function siempre_preprocess_comment(array &$variables) {
   $variables['created'] = \Drupal::service('date.formatter')
     ->format($comment->getCreatedTime(), 'custom', 'n/d/Y \a\t g:i a');
 
-  // Swap the username for First Last when those user-profile fields
-  // are populated. Match Drupal's default link-vs-span pattern based
-  // on whether the viewer can access the user profile.
+  // Render the author always as a plain <span class="username"> — no
+  // link to a user profile. Use first/last from user-profile fields
+  // when populated; fall back to the account display name (username,
+  // or "Anonymous" for anon) so the line still has a name to print
+  // when the profile fields are empty.
   $owner = $comment->getOwner();
   if ($owner) {
     $first = $owner->hasField('field_account_first_name')
@@ -132,26 +134,11 @@ function siempre_preprocess_comment(array &$variables) {
       ? trim((string) $owner->get('field_account_last_name')->value)
       : '';
     $full_name = trim("$first $last");
+    $display_name = $full_name !== '' ? $full_name : $owner->getDisplayName();
 
-    if ($full_name !== '') {
-      if (!$owner->isAnonymous() && $owner->access('view')) {
-        $author_build = [
-          '#type' => 'link',
-          '#title' => $full_name,
-          '#url' => $owner->toUrl(),
-          '#attributes' => [
-            'title' => t('View user profile.'),
-            'class' => ['username'],
-          ],
-        ];
-        $variables['author'] = \Drupal::service('renderer')->render($author_build);
-      }
-      else {
-        $variables['author'] = \Drupal\Core\Render\Markup::create(
-          '<span class="username">' . \Drupal\Component\Utility\Html::escape($full_name) . '</span>'
-        );
-      }
-    }
+    $variables['author'] = \Drupal\Core\Render\Markup::create(
+      '<span class="username">' . \Drupal\Component\Utility\Html::escape($display_name) . '</span>'
+    );
   }
 
   // template_preprocess_comment() already composed 'submitted' from

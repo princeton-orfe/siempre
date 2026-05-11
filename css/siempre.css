@@ -112,6 +112,24 @@ main.main-content {
   border-top: 1px dashed #e8eaed;
   font-size: 0.9em;
 }
+/* Reply: styled as a primary button. Other action items (Edit, Delete)
+   keep their plain-link styling. */
+.field--name-field-submission-comments .comment .content .links.inline li.comment-reply a {
+  display: inline-block;
+  padding: 0.4em 0.9em;
+  background-color: var(--siempre-accent, #0036b1);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  line-height: 1.2;
+  transition: background-color 0.15s ease;
+}
+.field--name-field-submission-comments .comment .content .links.inline li.comment-reply a:hover,
+.field--name-field-submission-comments .comment .content .links.inline li.comment-reply a:focus {
+  background-color: var(--siempre-accent-dark, #002780);
+  color: #fff;
+  text-decoration: none;
+}
 .field--name-field-submission-comments .comment.by-node-author {
   border-left-color: #2e7d32;
 }
