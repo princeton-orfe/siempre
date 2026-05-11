@@ -194,11 +194,13 @@ main.main-content {
 }
 
 /* Auto-populated "Jump to:" secondary nav. The nav element is
-   inserted by js/jump-to.js at the top of main.main-content on any
-   page with two or more visible H2 section headings. Sticky so it
-   stays usable while scrolling long pages; CSS scroll-behavior:
-   smooth on html + scroll-margin-top on the H2 targets keeps the
-   landing position clear of the sticky bar. */
+   inserted by js/jump-to.js directly below the site header region
+   (outside <main>) on any page with two or more visible H2 section
+   headings. Sticky so it pins to the top while scrolling long
+   pages; CSS scroll-behavior: smooth on html + scroll-margin-top on
+   the H2 targets keeps the landing position clear of the bar.
+   A Back-to-Top item at the end of the list is revealed once the
+   user has scrolled past the threshold defined in jump-to.js. */
 html {
   scroll-behavior: smooth;
 }
@@ -206,7 +208,7 @@ html {
 .jump-to-nav {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -226,10 +228,12 @@ html {
 .jump-to-nav__list {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.4em 0.75em;
   margin: 0;
   padding: 0;
   list-style: none;
+  flex: 1 1 auto;
 }
 .jump-to-nav__item {
   margin: 0;
@@ -248,6 +252,25 @@ html {
   background-color: var(--siempre-accent, #0036b1);
   color: #fff;
   text-decoration: none;
+}
+.jump-to-nav__item--back-to-top {
+  margin-left: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.jump-to-nav--scrolled .jump-to-nav__item--back-to-top {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.jump-to-nav__link--back-to-top {
+  font-weight: 600;
+}
+.jump-to-nav__link--back-to-top::before {
+  content: "\2191";
+  margin-right: 0.3em;
 }
 main.main-content h2 {
   scroll-margin-top: 4.5em;
