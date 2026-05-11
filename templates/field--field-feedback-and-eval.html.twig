@@ -1,0 +1,15 @@
+{#
+/**
+ * Custom template for Feedback and Evaluation field
+ */
+#}
+<div class="feedback-entries-wrapper">
+  {% for item in items %}
+    <div class="feedback-entry-card">
+      <h4 class="feedback-entry-header">Entry {{ loop.index }}</h4>
+      <div class="feedback-entry-content">
+        {{ item.content }}
+      </div>
+    </div>
+  {% endfor %}
+</div>
