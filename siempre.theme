@@ -8,15 +8,38 @@
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
  *
- * On report nodes, hide the duplicate per-field "Collection of a letter
- * or number grade…" description on each grade field and show it once as
- * a single help block above the Letter/Numeric Grade pair.
+ * Report-node form customizations:
+ * - Consolidate the duplicate "Collection of a letter or number grade…"
+ *   description into a single help block wrapping the grade pair.
+ * - Reformat the "Last saved" timestamp in the entity-meta sidebar to
+ *   match the site's "n/d/Y at g:i a" convention.
+ * - Show the author's first/last name in the sidebar instead of the
+ *   username, when those user-profile fields are populated.
  */
 function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $entity = $form_state->getFormObject()->getEntity();
   if (!$entity instanceof \Drupal\node\NodeInterface || $entity->bundle() !== 'report') {
     return;
   }
+
+  // Entity-meta sidebar: reformat "Last saved" and humanize "Author".
+  if (isset($form['meta']['changed']) && !$entity->isNew()) {
+    $form['meta']['changed']['#markup'] = \Drupal::service('date.formatter')
+      ->format($entity->getChangedTime(), 'custom', 'n/d/Y \a\t g:i a');
+  }
+  if (isset($form['meta']['author']) && ($owner = $entity->getOwner())) {
+    $first = $owner->hasField('field_account_first_name')
+      ? trim((string) $owner->get('field_account_first_name')->value)
+      : '';
+    $last = $owner->hasField('field_account_last_name')
+      ? trim((string) $owner->get('field_account_last_name')->value)
+      : '';
+    $full_name = trim("$first $last");
+    if ($full_name !== '') {
+      $form['meta']['author']['#markup'] = \Drupal\Component\Utility\Html::escape($full_name);
+    }
+  }
+
   if (!isset($form['field_submission_grade'])) {
     return;
   }
