@@ -60,6 +60,10 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
   // Last saved change.
   if (isset($form['meta']['published'])) {
     $form['meta']['published']['#weight'] = 0;
+    // Core renders the entity-meta header from #markup ("Published" /
+    // "Not published"). Replace with a label that frames the sidebar
+    // as report-submission context.
+    $form['meta']['published']['#markup'] = (string) t('Submission Details');
   }
   if (isset($form['meta']['author'])) {
     $form['meta']['author']['#title'] = t('Submitted by');
