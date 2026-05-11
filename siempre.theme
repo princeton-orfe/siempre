@@ -98,6 +98,30 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
 }
 
 /**
+ * Implements hook_preprocess_views_view_field().
+ *
+ * On the individual_submission_display view, strip the literal
+ * "(PDF)" from any field's rendered output so the link text reads
+ * cleanly (the PDF identification comes from a CSS-rendered icon).
+ * Handles case variants and surrounding whitespace.
+ */
+function siempre_preprocess_views_view_field(array &$variables) {
+  $view = $variables['view'];
+  if ($view->id() !== 'individual_submission_display') {
+    return;
+  }
+  $output = $variables['output'] ?? NULL;
+  if (!$output instanceof \Drupal\Component\Render\MarkupInterface) {
+    return;
+  }
+  $string = (string) $output;
+  $cleaned = preg_replace('/\s*\([Pp][Dd][Ff]\)/', '', $string);
+  if ($cleaned !== $string) {
+    $variables['output'] = \Drupal\Core\Render\Markup::create($cleaned);
+  }
+}
+
+/**
  * Implements hook_preprocess_comment().
  *
  * For comments on report nodes, replace the default "Submitted by
