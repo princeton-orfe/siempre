@@ -1247,7 +1247,9 @@ td.views-field-field-gsr-puid a {
 		width: 1.35em;
 		height: 1.35em;
 		margin: 0 0.15em;
-		font-size: 0;
+		/* Hide the literal "pdf" text without collapsing the box —
+		   `font-size: 0` here would zero out the em-based width/height
+		   and the icon would disappear with it. */
 		text-indent: 100%;
 		white-space: nowrap;
 		overflow: hidden;
