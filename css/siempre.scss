@@ -43,6 +43,15 @@ main.main-content {
 	color: gray;
 }
 
+/* Letter Grade: the Chosen library writes an inline width:640px on the
+   container based on the initial form layout, which overflows on narrow
+   viewports and is far wider than needed for 3-character values
+   ("INC", "A+", etc.). Override at all breakpoints to a compact width
+   sized for the longest option plus the arrow. */
+.node-form .field--name-field-submission-grade .chosen-container {
+	width: 7em !important;
+}
+
 /* Report-form: lay Letter Grade and Numeric Grade side-by-side on
    wide-enough viewports. They're sibling .field--name-... wrappers
    inside the form's main region, so float-50% is the least invasive
@@ -58,13 +67,6 @@ main.main-content {
 	.node-form .field--name-field-submission-grade {
 		margin-right: 1.5rem;
 	}
-
-	/* The Chosen library hard-codes the dropdown width inline based on
-	   the wrapper's pre-float size; force it back to fill the half. */
-	.node-form .field--name-field-submission-grade .chosen-container {
-		width: 100% !important;
-	}
-
 	.node-form .field--name-field-feedback-and-eval {
 		clear: both;
 	}
