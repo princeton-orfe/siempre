@@ -121,6 +121,19 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
   if (isset($form['revision_information'])) {
     $form['revision_information']['#weight'] = 50;
   }
+
+  // Hide sections that aren't relevant to report submitters on this
+  // bundle. Authoring information (uid/created) and URL Redirects are
+  // suppressed unconditionally for the report content type. The author
+  // is already surfaced via the meta sidebar ("Submitted by") so the
+  // standalone Authoring section is redundant; URL Redirects don't
+  // apply to this workflow. Done as #access = FALSE so the values are
+  // preserved on submit rather than wiped.
+  foreach (['author', 'redirect', 'url_redirects'] as $section) {
+    if (isset($form[$section])) {
+      $form[$section]['#access'] = FALSE;
+    }
+  }
   if (isset($form['meta']['author']) && ($owner = $entity->getOwner())) {
     $first = $owner->hasField('field_account_first_name')
       ? trim((string) $owner->get('field_account_first_name')->value)
