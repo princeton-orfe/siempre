@@ -70,6 +70,31 @@ main.main-content {
 	text-decoration: underline;
 }
 
+/* Active main-menu indicator: a 3px accent-colored underline beneath
+   the link for the current page (.is-active on the <a>) and for any
+   ancestor in the active trail (.menu-item--active-trail on the
+   <li>). Ships as an absolutely-positioned ::after so toggling the
+   indicator doesn't shift sibling items vertically. Scoped to the
+   main navigation block so secondary menus aren't affected. */
+#block-siempre-mainnavigation-menu .menu-item > a,
+#block-siempre-mainnavigation-menu .menu-item__link {
+	position: relative;
+}
+#block-siempre-mainnavigation-menu .menu-item > a.is-active::after,
+#block-siempre-mainnavigation-menu .menu-item--active-trail > a::after,
+#block-siempre-mainnavigation-menu .menu-item--active-trail > .menu-item__link::after,
+#block-siempre-mainnavigation-menu a.menu-item__link.is-active::after {
+	content: "";
+	position: absolute;
+	left: 0.25em;
+	right: 0.25em;
+	bottom: -3px;
+	height: 3px;
+	background-color: var(--siempre-accent, #0036b1);
+	border-radius: 2px;
+	box-shadow: 0 1px 2px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15));
+}
+
 .view-currently-logged-in-as {
 	color: gray;
 }
