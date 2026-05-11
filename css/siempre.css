@@ -877,4 +877,15 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   border-radius: 0;
 }
 
+/* Suppress default list bullets when a view's header is configured
+   with <ul>/<ol> markup (e.g. the "Submit a Report" link in the
+   Submitted Reports view). If a bullet character is literally typed
+   into the view header in admin, edit the view header instead. */
+.view-header ul,
+.view-header ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /*# sourceMappingURL=siempre.css.map */
