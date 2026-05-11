@@ -43,6 +43,14 @@ main.main-content {
 	color: gray;
 }
 
+/* Hide the primary tabs (View / Edit / Delete / Revisions) on every
+   report-node route. Drupal puts a `page-node-type-report` class on
+   <body> for view, edit, delete, and revisions pages of report nodes,
+   so this single rule covers all four. */
+.page-node-type-report .block-local-tasks-block {
+	display: none;
+}
+
 /* Letter Grade: the Chosen library writes an inline width:640px on the
    container based on the initial form layout, which overflows on narrow
    viewports and is far wider than needed for 3-character values
