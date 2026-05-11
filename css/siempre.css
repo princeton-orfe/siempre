@@ -1015,11 +1015,17 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+.form-managed-file.is-single {
+  display: block !important;
+  width: 100% !important;
+}
 .form-managed-file__main {
   display: flex !important;
   flex-wrap: wrap !important;
   align-items: center !important;
+  justify-content: space-between !important;
   gap: 0.75em !important;
+  width: 100% !important;
 }
 .form-managed-file .remove-button.button,
 .form-managed-file .form-managed-file__main .remove-button.button {

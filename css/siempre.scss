@@ -1156,11 +1156,22 @@ td.views-field-field-gsr-puid a {
    !important on the gradient/color/margin lines that Claro touches.
    The ✕ glyph is prepended to the input's value attribute by
    _siempre_field_submission_file_after_build(). */
+/* Make the file-pill / remove-button row span the field width and
+   anchor its children to opposing edges. The .form-managed-file
+   wrapper carries .is-single which Claro renders inline-flex, so
+   without explicit width on __main the row only stretches to the
+   content width and margin-left: auto has no slack to push into. */
+.form-managed-file.is-single {
+	display: block !important;
+	width: 100% !important;
+}
 .form-managed-file__main {
 	display: flex !important;
 	flex-wrap: wrap !important;
 	align-items: center !important;
+	justify-content: space-between !important;
 	gap: 0.75em !important;
+	width: 100% !important;
 }
 .form-managed-file .remove-button.button,
 .form-managed-file .form-managed-file__main .remove-button.button {
