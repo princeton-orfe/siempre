@@ -128,8 +128,12 @@ main.main-content {
 				}
 			}
 
-			/* Reply / Edit / Delete action links. */
+			/* Reply / Edit / Delete action links. Force `display: block`
+			   because Drupal's `.links.inline` defaults to display: inline,
+			   which silently ignores vertical margin/padding and makes
+			   the border-top span only the inline-content width. */
 			.links.inline {
+				display: block;
 				margin: 1.5em 0 0;
 				padding-top: 1em;
 				border-top: 1px dashed #e8eaed;
