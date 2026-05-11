@@ -22,22 +22,23 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
     return;
   }
 
-  // Entity-meta sidebar: reformat "Last saved", humanize "Author", and
-  // insert a "Report submitted" entry. Drupal core sets no #weight on
-  // these items, so without explicit weights they render in array
-  // order — meaning a negative #weight on a new entry would land it
-  // *above* everything. Pin all four so the order is deterministic:
-  // Published → Report submitted → Last saved → Author.
+  // Entity-meta sidebar: reformat "Last saved" (relabeled "Last saved
+  // change"), humanize "Author", reorder Author up to sit right under
+  // Published, and insert a "Report submitted" entry. Drupal core
+  // sets no #weight on these items, so we pin all of them explicitly
+  // to lock the order: Published → Author → Report submitted →
+  // Last saved change.
   if (isset($form['meta']['published'])) {
     $form['meta']['published']['#weight'] = 0;
   }
+  if (isset($form['meta']['author'])) {
+    $form['meta']['author']['#weight'] = 5;
+  }
   if (isset($form['meta']['changed']) && !$entity->isNew()) {
+    $form['meta']['changed']['#title'] = t('Last saved change');
     $form['meta']['changed']['#markup'] = \Drupal::service('date.formatter')
       ->format($entity->getChangedTime(), 'custom', 'n/d/Y \a\t g:i a');
     $form['meta']['changed']['#weight'] = 20;
-  }
-  if (isset($form['meta']['author'])) {
-    $form['meta']['author']['#weight'] = 30;
   }
 
   if (!$entity->isNew()) {
