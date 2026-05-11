@@ -21,15 +21,30 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
     return;
   }
 
+  // Pin the trio's weights so they render adjacent (help, letter,
+  // numeric) and the wrapping div can't enclose unrelated siblings.
   $grade_weight = $form['field_submission_grade']['#weight'] ?? 0;
+  $form['field_submission_grade']['#weight'] = $grade_weight;
+  if (isset($form['field_numeric_grade'])) {
+    $form['field_numeric_grade']['#weight'] = $grade_weight + 0.5;
+  }
+
+  // The wrapper div opens on the help item and closes on field_numeric
+  // _grade (the last in the trio), so all three render inside one
+  // shaded region. CSS uses .grade-region + a clearfix to contain the
+  // floated grade fields.
   $form['grade_help'] = [
     '#type' => 'item',
     '#title' => t('Grade'),
     '#description' => t('Collection of a letter or number grade is at the discretion of the instructor or program administrator. Please inquire as to which to enter as you may enter either a letter or a number, but not both. This field facilitates conveyance of performance feedback between instructors and students and does not constitute an official record.'),
     '#weight' => $grade_weight - 0.5,
-    '#prefix' => '<div class="grade-help-block">',
-    '#suffix' => '</div>',
+    '#prefix' => '<div class="grade-region">',
   ];
+
+  if (isset($form['field_numeric_grade'])) {
+    $form['field_numeric_grade']['#suffix'] =
+      ($form['field_numeric_grade']['#suffix'] ?? '') . '</div>';
+  }
 
   // Suppress the duplicate per-field descriptions now that the text
   // lives in the consolidated help block above the pair.

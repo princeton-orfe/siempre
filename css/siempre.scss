@@ -52,15 +52,26 @@ main.main-content {
 	width: 9em !important;
 }
 
-/* Consolidated help block above the Grade fields, injected by
-   siempre_form_node_form_alter(). Framed with the theme accent. */
-.node-form .grade-help-block {
+/* Grade region: shaded box containing the help text + Letter Grade +
+   Numeric Grade. The wrapper div is opened by #prefix on the help item
+   and closed by #suffix on field_numeric_grade in
+   siempre_form_node_form_alter(). The ::after clearfix grows the
+   wrapper around the two floated grade fields so the background
+   actually covers them. The label bold rule is scoped via direct-child
+   selectors so it only emphasizes the "Grade" title of the help item,
+   not the inner "Letter Grade" / "Numeric Grade" field labels. */
+.node-form .grade-region {
 	margin: 1em 0;
 	padding: 0.75em 1em;
 	border-left: 3px solid var(--siempre-accent, #0036b1);
 	background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
 }
-.node-form .grade-help-block .form-item__label {
+.node-form .grade-region::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.node-form .grade-region > .form-item > .form-item__label {
 	font-weight: 600;
 }
 
