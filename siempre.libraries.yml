@@ -2,3 +2,10 @@ styles:
         css:
                 theme:
                         css/siempre.css: {}
+
+jump-to:
+        js:
+                js/jump-to.js: {}
+        dependencies:
+                - core/drupal
+                - core/once

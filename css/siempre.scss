@@ -229,6 +229,73 @@ main.main-content {
 	}
 }
 
+/* Auto-populated "Jump to:" secondary nav. The nav element is
+   inserted by js/jump-to.js at the top of main.main-content on any
+   page with two or more visible H2 section headings. Sticky so it
+   stays usable while scrolling long pages; CSS scroll-behavior:
+   smooth on html + scroll-margin-top on the H2 targets keeps the
+   landing position clear of the sticky bar. */
+html {
+	scroll-behavior: smooth;
+}
+
+.jump-to-nav {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.4em 0.75em;
+	margin: 0 0 1.5em;
+	padding: 0.6em 1em;
+	background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
+	border-top: 1px solid var(--siempre-accent, #0036b1);
+	border-bottom: 1px solid var(--siempre-accent, #0036b1);
+	font-size: 0.95em;
+}
+
+.jump-to-nav__label {
+	font-weight: 600;
+	color: #444;
+	white-space: nowrap;
+}
+
+.jump-to-nav__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em 0.75em;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.jump-to-nav__item {
+	margin: 0;
+	padding: 0;
+}
+
+.jump-to-nav__link {
+	display: inline-block;
+	padding: 0.2em 0.6em;
+	color: var(--siempre-accent, #0036b1);
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+.jump-to-nav__link:hover,
+.jump-to-nav__link:focus {
+	background-color: var(--siempre-accent, #0036b1);
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Keep the landing H2 below the sticky bar after a jump. The bar is
+   roughly 2.5em tall depending on viewport; pad generously. */
+main.main-content h2 {
+	scroll-margin-top: 4.5em;
+}
+
 /* Profile-editor layout for the "update_photos" user form display.
    Scoping class is added by siempre_form_user_form_alter() when the
    ?display=update_photos query param is present. Two columns at
