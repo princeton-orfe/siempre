@@ -145,6 +145,36 @@ function siempre_preprocess_views_view_field(array &$variables) {
 }
 
 /**
+ * Implements hook_preprocess_field().
+ *
+ * On report nodes, replace the generic "Submission Comments" label
+ * with the report-type prefix, e.g. "Final Thesis Submission Comments".
+ * The label comes from field_submission_report_type's allowed_values
+ * so the human-readable option name is used, not the stored key.
+ */
+function siempre_preprocess_field(array &$variables) {
+  if (($variables['field_name'] ?? '') !== 'field_submission_comments') {
+    return;
+  }
+  $entity = $variables['element']['#object'] ?? NULL;
+  if (!$entity instanceof \Drupal\node\NodeInterface || $entity->bundle() !== 'report') {
+    return;
+  }
+  if (!$entity->hasField('field_submission_report_type')
+      || $entity->get('field_submission_report_type')->isEmpty()) {
+    return;
+  }
+  $raw = $entity->get('field_submission_report_type')->value;
+  $allowed = $entity->get('field_submission_report_type')
+    ->getFieldDefinition()
+    ->getSetting('allowed_values');
+  $type_label = $allowed[$raw] ?? $raw;
+  if ($type_label !== '') {
+    $variables['label'] = t('@type Submission Comments', ['@type' => $type_label]);
+  }
+}
+
+/**
  * Implements hook_preprocess_comment().
  *
  * For comments on report nodes, replace the default "Submitted by
