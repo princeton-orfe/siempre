@@ -6,6 +6,7 @@ base theme: claro
 libraries:
   - siempre/styles
   - siempre/jump-to
+  - siempre/file-remove-confirm
 regions:
   header: 'Header'
   pre_content: 'Pre-content'

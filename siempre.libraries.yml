@@ -9,3 +9,10 @@ jump-to:
         dependencies:
                 - core/drupal
                 - core/once
+
+file-remove-confirm:
+        js:
+                js/file-remove-confirm.js: {}
+        dependencies:
+                - core/drupal
+                - core/once
