@@ -871,4 +871,10 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   padding-left: 0;
 }
 
+/* Square off the Responsive Menus toggler — the module ships with a
+   pill-shaped button that clashes with the rest of the chrome. */
+.responsive-menus.responsified span.toggler {
+  border-radius: 0;
+}
+
 /*# sourceMappingURL=siempre.css.map */

@@ -996,3 +996,9 @@ td.views-field-field-gsr-puid a {
 		padding-left: 0;
 	}
 }
+
+/* Square off the Responsive Menus toggler — the module ships with a
+   pill-shaped button that clashes with the rest of the chrome. */
+.responsive-menus.responsified span.toggler {
+	border-radius: 0;
+}
