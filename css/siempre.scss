@@ -71,19 +71,16 @@ main.main-content {
 }
 
 /* Active main-menu indicator: a 3px accent-colored underline beneath
-   the link for the current page (.is-active on the <a>) and for any
-   ancestor in the active trail (.menu-item--active-trail on the
-   <li>). Ships as an absolutely-positioned ::after so toggling the
+   the current link. Drupal marks the link itself with .is-active and
+   any ancestor in the trail with .menu-item--active-trail; we match
+   both. Ships as an absolutely-positioned ::after so toggling the
    indicator doesn't shift sibling items vertically. Scoped to the
    main navigation block so secondary menus aren't affected. */
-#block-siempre-mainnavigation-menu .menu-item > a,
-#block-siempre-mainnavigation-menu .menu-item__link {
+#block-siempre-mainnavigation-menu a {
 	position: relative;
 }
-#block-siempre-mainnavigation-menu .menu-item > a.is-active::after,
-#block-siempre-mainnavigation-menu .menu-item--active-trail > a::after,
-#block-siempre-mainnavigation-menu .menu-item--active-trail > .menu-item__link::after,
-#block-siempre-mainnavigation-menu a.menu-item__link.is-active::after {
+#block-siempre-mainnavigation-menu a.is-active::after,
+#block-siempre-mainnavigation-menu .menu-item--active-trail > a::after {
 	content: "";
 	position: absolute;
 	left: 0.25em;
