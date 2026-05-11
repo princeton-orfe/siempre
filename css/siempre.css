@@ -1015,27 +1015,36 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.form-managed-file .form-managed-file__main .remove-button,
-.form-managed-file .remove-button {
-  margin-left: auto;
-  background-color: #fff;
-  color: #b91c1c;
-  border: 1.5px solid #b91c1c;
-  padding: 0.55em 1.1em;
-  border-radius: 4px;
-  font-weight: 600;
-  text-transform: none;
-  box-shadow: none;
+.form-managed-file__main {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.75em !important;
+}
+.form-managed-file .remove-button.button,
+.form-managed-file .form-managed-file__main .remove-button.button {
+  margin-left: auto !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #b91c1c !important;
+  border: 1.5px solid #b91c1c !important;
+  padding: 0.55em 1.1em !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.form-managed-file .form-managed-file__main .remove-button:hover,
-.form-managed-file .form-managed-file__main .remove-button:focus,
-.form-managed-file .remove-button:hover,
-.form-managed-file .remove-button:focus {
-  background-color: #fef2f2;
-  border-color: #991b1b;
-  color: #991b1b;
-  box-shadow: 0 1px 3px rgba(185, 28, 28, 0.18);
+.form-managed-file .remove-button.button:hover,
+.form-managed-file .remove-button.button:focus,
+.form-managed-file .form-managed-file__main .remove-button.button:hover,
+.form-managed-file .form-managed-file__main .remove-button.button:focus {
+  background-color: #fef2f2 !important;
+  background-image: none !important;
+  border-color: #991b1b !important;
+  color: #991b1b !important;
+  box-shadow: 0 1px 3px rgba(185, 28, 28, 0.18) !important;
 }
 
 /*# sourceMappingURL=siempre.css.map */
