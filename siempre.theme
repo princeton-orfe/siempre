@@ -32,6 +32,7 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
     $form['meta']['published']['#weight'] = 0;
   }
   if (isset($form['meta']['author'])) {
+    $form['meta']['author']['#title'] = t('Submitted by');
     $form['meta']['author']['#weight'] = 5;
   }
   if (isset($form['meta']['changed']) && !$entity->isNew()) {
