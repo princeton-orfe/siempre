@@ -929,35 +929,58 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 }
 
 /* Submission File on the edit form: re-skin the managed-file widget
-   so the PDF link mirrors the prominent download button used in the
-   view-mode. Form structure (Remove submit input + hidden fids) is
-   untouched; only the visual layer changes. */
+   into a segmented pill — filename on the left (accent background)
+   and file size on the right (darker accent shade), with the Remove
+   action pushed to the far right of the row as a destructive red
+   button. Core's per-mime PDF icon is suppressed; the inline SVG is
+   the only visual cue. ".pdf" extension is stripped at preprocess. */
 .form-managed-file__main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75em;
 }
-.form-managed-file .file {
+
+.form-managed-file .file--application-pdf,
+.form-managed-file .file--mime-application-pdf,
+.form-managed-file .file--application-pdf::before,
+.form-managed-file .file--mime-application-pdf::before {
+  background-image: none !important;
+  padding-left: 0 !important;
+}
+
+.form-managed-file .file--application-pdf,
+.form-managed-file .file--mime-application-pdf {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.form-managed-file .file--application-pdf:hover,
+.form-managed-file .file--application-pdf:focus-within,
+.form-managed-file .file--mime-application-pdf:hover,
+.form-managed-file .file--mime-application-pdf:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.form-managed-file .file--application-pdf a,
+.form-managed-file .file--mime-application-pdf a {
   display: inline-flex;
   align-items: center;
-}
-.form-managed-file .file--mime-application-pdf a,
-.form-managed-file .file--application-pdf a {
-  display: inline-block;
   position: relative;
-  padding: 0.65em 1.3em 0.65em 2.9em;
+  padding: 0.65em 1.1em 0.65em 2.9em;
   background-color: var(--siempre-accent, #0036b1);
   color: #fff;
   font-size: 1.02em;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease;
 }
-.form-managed-file .file--mime-application-pdf a::before,
-.form-managed-file .file--application-pdf a::before {
+.form-managed-file .file--application-pdf a::before,
+.form-managed-file .file--mime-application-pdf a::before {
   content: "";
   position: absolute;
   left: 0.7em;
@@ -970,37 +993,46 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   background-size: contain;
   background-position: center;
 }
-.form-managed-file .file--mime-application-pdf a:hover,
-.form-managed-file .file--mime-application-pdf a:focus,
 .form-managed-file .file--application-pdf a:hover,
-.form-managed-file .file--application-pdf a:focus {
+.form-managed-file .file--application-pdf a:focus,
+.form-managed-file .file--mime-application-pdf a:hover,
+.form-managed-file .file--mime-application-pdf a:focus {
   background-color: var(--siempre-accent-dark, #002780);
   color: #fff;
   text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-.form-managed-file .file__size {
-  margin-left: 0.5em;
-  color: #6b7280;
-  font-size: 0.9em;
-}
-.form-managed-file .remove-button {
-  background: transparent;
-  color: #b91c1c;
-  border: 1px solid #d1d5db;
-  padding: 0.45em 0.9em;
-  border-radius: 4px;
+
+.form-managed-file .file--application-pdf .file__size,
+.form-managed-file .file--mime-application-pdf .file__size {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1em;
+  margin-left: 0;
+  background-color: var(--siempre-accent-darker, #001a66);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.85em;
   font-weight: 500;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.form-managed-file .remove-button {
+  margin-left: auto;
+  background-color: #b91c1c;
+  color: #fff;
+  border: 1px solid #b91c1c;
+  padding: 0.55em 1.1em;
+  border-radius: 4px;
+  font-weight: 600;
   text-transform: none;
-  box-shadow: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .form-managed-file .remove-button:hover,
 .form-managed-file .remove-button:focus {
-  background-color: #fef2f2;
-  border-color: #b91c1c;
-  color: #991b1b;
-  box-shadow: none;
+  background-color: #991b1b;
+  border-color: #7f1d1d;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 /*# sourceMappingURL=siempre.css.map */

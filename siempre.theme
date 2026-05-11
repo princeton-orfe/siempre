@@ -134,6 +134,16 @@ function siempre_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateI
       $form[$section]['#access'] = FALSE;
     }
   }
+
+  // The managed_file widget's Remove submit input is built during
+  // element processing (after form_alter runs), so its #value can't
+  // be set directly here. Attach an #after_build that prepends a
+  // multiplication-X glyph so the button reads "✕ Remove" — pseudo-
+  // elements on <input> aren't possible, so the icon ships in the
+  // value attribute itself.
+  if (isset($form['field_submission_file'])) {
+    $form['field_submission_file']['#after_build'][] = '_siempre_field_submission_file_after_build';
+  }
   if (isset($form['meta']['author']) && ($owner = $entity->getOwner())) {
     $first = $owner->hasField('field_account_first_name')
       ? trim((string) $owner->get('field_account_first_name')->value)
@@ -572,4 +582,40 @@ function _siempre_hsl_to_hex($h, $s, $l) {
   $b = round($b * 255);
 
   return sprintf('#%02x%02x%02x', $r, $g, $b);
+}
+
+/**
+ * After-build callback for the field_submission_file widget.
+ *
+ * Adds a leading ✕ glyph to the Remove submit button so the
+ * destructive action is visually obvious. Pseudo-elements can't
+ * decorate an <input>, so the icon ships in the value attribute.
+ */
+function _siempre_field_submission_file_after_build(array $element, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if (isset($element['widget'])) {
+    foreach (\Drupal\Core\Render\Element::children($element['widget']) as $delta) {
+      if (isset($element['widget'][$delta]['remove_button']['#value'])) {
+        $element['widget'][$delta]['remove_button']['#value'] = '✕ ' . (string) t('Remove');
+      }
+    }
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_preprocess_file_link().
+ *
+ * Strip the ".pdf" extension from rendered file link titles. The PDF
+ * nature of the file is communicated through the styled button +
+ * mime-class icon, so the literal extension is redundant noise.
+ */
+function siempre_preprocess_file_link(array &$variables) {
+  if (!isset($variables['link']['#title'])) {
+    return;
+  }
+  $title = (string) $variables['link']['#title'];
+  $stripped = preg_replace('/\.pdf$/i', '', $title);
+  if ($stripped !== $title) {
+    $variables['link']['#title'] = $stripped;
+  }
 }
