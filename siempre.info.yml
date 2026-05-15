@@ -1,9 +1,10 @@
 name: Siempre
 type: theme
-description: 'A sub-theme of Claro that adds visual distinctiveness and configurable accent colors when Claro is used as a site default theme.'
+description: 'A sub-theme of Claro that applies Princeton "Tiger" design standards (typography, spacing, layout) while retaining configurable accent colors for the OIWPS site.'
 core_version_requirement: ^9 || ^10 || ^11
 base theme: claro 
 libraries:
+  - siempre/fonts
   - siempre/styles
   - siempre/jump-to
   - siempre/file-remove-confirm

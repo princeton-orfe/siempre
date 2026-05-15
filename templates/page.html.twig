@@ -44,6 +44,15 @@
 #}
 <div class="layout-container">
 
+  {# Princeton Tiger Bar #}
+  <div class="pt-princeton-bar">
+    <div class="container">
+      <a href="https://www.princeton.edu" class="pt-pu-logo" title="Princeton University">
+        <img src="{{ base_path ~ directory }}/images/pu-logo.svg" alt="Princeton University" />
+      </a>
+    </div>
+  </div>
+
   {{ page.header }}
 
   {{ page.pre_content }}
@@ -89,17 +98,20 @@
   {% endif %}
 
   {% if page.subfooter_first or page.subfooter_second or page.subfooter_third %}
-    <div class="subfooter">
+    <div class="subfooter pt-subfooter">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 pt-subfooter__links">
             {{ page.subfooter_first }}
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 pt-subfooter__copy">
             {{ page.subfooter_second }}
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 pt-subfooter__shield">
             {{ page.subfooter_third }}
+            <a href="https://www.princeton.edu" title="Princeton University">
+              <img src="{{ base_path ~ directory }}/images/pu-logo-stacked.svg" alt="Princeton University" />
+            </a>
           </div>
         </div>
       </div>

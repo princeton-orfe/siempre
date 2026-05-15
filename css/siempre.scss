@@ -1,3 +1,80 @@
+@import "tiger_tokens";
+
+/* Paper Tiger Standards - Global */
+body {
+	color: var(--color-ink);
+	background: var(--color-white);
+	font-family: var(--font-body);
+	font-size: var(--font-size-base);
+	line-height: var(--line-normal);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-display);
+	color: var(--color-neutral-100);
+	margin: 1.5rem 0 0.75rem;
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+	font-weight: var(--font-weight-medium);
+	line-height: var(--line-tight);
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.3;
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+	font-weight: var(--font-weight-regular);
+	line-height: 1.31;
+}
+
+h4 { font-size: 1.5rem; font-weight: var(--font-weight-bold); }
+h5 { font-size: 1.375rem; font-weight: var(--font-weight-regular); text-transform: uppercase; letter-spacing: 0.02em; }
+h6 { font-size: 1.25rem; font-weight: var(--font-weight-bold); }
+
+p { margin: 0.75rem 0; }
+
+a {
+	color: var(--siempre-accent, #0036b1);
+	text-underline-offset: 2px;
+	transition: color 0.15s ease;
+
+	&:hover,
+	&:focus {
+		color: var(--siempre-accent-dark, #002780);
+	}
+
+	&:visited {
+		color: var(--siempre-accent-darker, #001a50);
+	}
+}
+
+/* Paper Tiger Layout Components */
+
+.pt-princeton-bar {
+	background-color: var(--color-neutral-100);
+	padding: var(--space-4) 0;
+	
+	.container {
+		max-width: var(--container-max);
+		margin: 0 auto;
+		padding: 0 var(--space-4);
+	}
+
+	.pt-pu-logo img {
+		height: 1.125rem;
+		width: auto;
+		display: block;
+	}
+}
+
 /* Sticky footer layout */
 html, body {
 	height: 100%;
@@ -12,6 +89,42 @@ html, body {
 
 main.main-content {
 	flex: 1 0 auto;
+}
+
+/* Form standards - Tiger */
+.form-item__label,
+.field__label {
+	font-family: var(--font-display);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-neutral-90);
+}
+
+.form-item__description,
+.field__description {
+	font-size: var(--font-size-xs);
+	color: var(--color-neutral-60);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+	font-family: var(--font-display);
+	padding: 0.55rem 0.75rem;
+	border: 1px solid var(--color-neutral-40);
+	background: var(--color-white);
+	color: var(--color-neutral-100);
+	border-radius: var(--radius-sm);
+
+	&:focus {
+		outline: 2px solid var(--siempre-accent, #0036b1); /* Use Siempre blue for focus */
+		outline-offset: 1px;
+		border-color: var(--color-neutral-100);
+	}
 }
 
 .field--name-field-submission-file {
@@ -125,7 +238,7 @@ main.main-content {
 	font-size: 1.1em;
 	font-weight: 600;
 	text-decoration: none;
-	border-radius: 6px;
+	border-radius: var(--radius-sm);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -478,7 +591,7 @@ main.main-content h2 {
 		}
 		/* The #markup of an #type=item lands as a text node next to the
 		   label; style the text-runs we get back. */
-		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+		font-family: var(--font-mono);
 		color: #222;
 	}
 
@@ -652,7 +765,7 @@ main.main-content h2 {
 .view-id-list_of_advisee_s_ {
 	.view-header {
 		margin-bottom: 0.4em;
-		color: #555;
+		color: var(--color-neutral-60);
 		font-size: 0.85em;
 		font-style: italic;
 		line-height: 1.4;
@@ -747,17 +860,37 @@ table.views-view-table td a,
 	}
 }
 
-/* Button accent colors */
+/* Button accent colors - Tiger Standards */
+.button,
+.button--primary,
+input[type="submit"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.625rem 1.25rem;
+	font-family: var(--font-display);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	border-radius: var(--radius-none); /* Tiger default square */
+	border: 2px solid transparent;
+	cursor: pointer;
+	text-decoration: none;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
 .button--primary,
 input[type="submit"] {
 	background-color: var(--siempre-accent, #0036b1) !important;
-	border-color: var(--siempre-accent-dark, #002780) !important;
+	border-color: var(--siempre-accent, #0036b1) !important;
 	color: #ffffff !important;
 
 	&:hover,
 	&:focus {
 		background-color: var(--siempre-accent-dark, #002780) !important;
-		border-color: var(--siempre-accent-darker, #001a50) !important;
+		border-color: var(--siempre-accent-dark, #002780) !important;
 		color: #ffffff !important;
 	}
 }
@@ -766,6 +899,8 @@ input[type="submit"] {
 .site-name a {
 	color: var(--siempre-accent, #0036b1) !important;
 	background-color: var(--siempre-accent-bg-light, rgba(0,54,177,0.05)) !important;
+	font-family: var(--font-display);
+	font-weight: var(--font-weight-bold);
 
 	&:hover,
 	&:focus {
@@ -777,6 +912,7 @@ input[type="submit"] {
 ul.menu {
 	background-color: var(--siempre-accent, #0036b1) !important;
 	box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0,54,177,0.15)) !important;
+	font-family: var(--font-ui);
 
 	> li > a {
 		color: #ffffff !important;
@@ -792,6 +928,8 @@ ul.menu {
 /* Horizontal tabs - override Claro variables */
 .is-horizontal .tabs__link {
 	color: var(--siempre-accent, #0036b1) !important;
+	font-family: var(--font-ui);
+	font-weight: var(--font-weight-medium);
 
 	&:hover,
 	&:focus {
@@ -812,6 +950,8 @@ ul.menu {
 /* Sortable table headings */
 .sortable-heading > a {
 	color: var(--siempre-accent-dark, inherit) !important;
+	font-family: var(--font-ui);
+	font-weight: var(--font-weight-semibold);
 
 	&:hover,
 	&:focus {
@@ -835,16 +975,26 @@ ul.menu {
 }
 
 /* Details summary */
-.claro-details__summary:hover {
-	color: var(--siempre-accent, #0036b1) !important;
-	background-color: var(--siempre-accent-bg-light, rgba(0,54,177,0.05)) !important;
+.claro-details__summary {
+	font-family: var(--font-display);
+	font-weight: var(--font-weight-medium);
+
+	&:hover {
+		color: var(--siempre-accent, #0036b1) !important;
+		background-color: var(--siempre-accent-bg-light, rgba(0,54,177,0.05)) !important;
+	}
 }
 
 /* GSR PUID links - special button style */
 td.views-field-field-gsr-puid a {
+	display: inline-flex;
+	padding: 0.3em 0.8em;
+	font-family: var(--font-ui);
+	font-size: var(--font-size-xs);
 	background-color: var(--siempre-accent-bg-light, #f4f0ff) !important;
 	color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
-	border-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+	border: 1px solid var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+	border-radius: var(--radius-sm);
 
 	&:hover,
 	&:focus {
@@ -855,8 +1005,13 @@ td.views-field-field-gsr-puid a {
 
 /* Edit node buttons */
 .views-field-edit-node a {
+	display: inline-flex;
+	padding: 0.3em 0.8em;
+	font-family: var(--font-ui);
+	font-size: var(--font-size-xs);
 	background-color: var(--siempre-accent-lightest, rgb(220, 210, 250)) !important;
 	color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+	border-radius: var(--radius-sm);
 
 	&:hover,
 	&:focus {
@@ -868,8 +1023,12 @@ td.views-field-field-gsr-puid a {
 
 /* Mailto buttons */
 .mailto-button {
+	display: inline-flex;
+	padding: 0.4em 1em;
+	font-family: var(--font-ui);
 	background-color: var(--siempre-accent-dark, #6a0dad) !important;
 	color: #ffffff !important;
+	border-radius: var(--radius-sm);
 
 	&:hover,
 	&:focus {
@@ -879,8 +1038,13 @@ td.views-field-field-gsr-puid a {
 
 /* ORFE action buttons */
 .custom-orfe-actions a {
+	display: inline-flex;
+	padding: 0.5em 1.2em;
+	font-family: var(--font-display);
+	font-weight: var(--font-weight-medium);
 	background-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
 	color: #fff !important;
+	border-radius: var(--radius-sm);
 
 	&:hover,
 	&:focus {
@@ -891,27 +1055,27 @@ td.views-field-field-gsr-puid a {
 
 /* Footer Styles */
 .footer {
-	background-color: #333; /* --color-neutral-85 */
-	border-top: 5px solid #e77500; /* --color-brand-70 Princeton orange */
-	color: #ffffff;
-	padding: 2rem 0;
+	background-color: var(--color-neutral-85);
+	border-top: var(--border-footer-accent);
+	color: var(--color-white);
+	padding: var(--space-8) 0;
 	width: calc(100% + 6em);
 	margin-left: -3em;
 	margin-right: -3em;
 	flex-shrink: 0;
 
 	.container {
-		max-width: 1200px;
+		max-width: var(--container-max);
 		margin: 0 auto;
-		padding: 0 15px;
+		padding: 0 var(--space-4);
 	}
 
 	a {
-		color: #ffffff;
+		color: var(--color-white);
 		text-decoration: none;
 
 		&:hover {
-			color: #e77500; /* Princeton orange */
+			color: var(--color-brand-70); /* Princeton orange as specified in Tiger */
 			text-decoration: underline;
 		}
 	}
@@ -935,7 +1099,7 @@ td.views-field-field-gsr-puid a {
 	.footer-columns {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 2rem;
+		gap: var(--space-8);
 
 		@media (max-width: 768px) {
 			grid-template-columns: 1fr;
@@ -962,52 +1126,52 @@ td.views-field-field-gsr-puid a {
 
 /* Subfooter Styles */
 .subfooter {
-	background-color: #1d1d1d; /* --color-neutral-90 */
-	color: #cccccc;
-	padding: 1.5rem 0;
-	font-size: 0.875rem;
+	background-color: var(--color-neutral-90);
+	color: var(--color-neutral-20);
+	padding: var(--space-6) 0;
+	font-size: var(--font-size-xs);
 	width: calc(100% + 6em);
 	margin-left: -3em;
 	margin-right: -3em;
 	flex-shrink: 0;
 
 	.container {
-		max-width: 1200px;
+		max-width: var(--container-max);
 		margin: 0 auto;
-		padding: 0 15px;
+		padding: 0 var(--space-4);
 	}
 
 	.row {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 2rem;
+		gap: var(--space-8);
 		align-items: center;
 
 		@media (max-width: 768px) {
 			grid-template-columns: 1fr;
 			text-align: center;
-			gap: 1rem;
+			gap: var(--space-4);
 		}
 	}
 
 	a {
-		color: #cccccc;
+		color: var(--color-neutral-20);
 		text-decoration: none;
 
 		&:hover {
-			color: #ffffff;
+			color: var(--color-white);
 			text-decoration: underline;
 		}
 	}
 
-	.subfooter-links {
+	.pt-subfooter__links {
 		ul {
 			list-style: none;
 			padding: 0;
 			margin: 0;
 			display: flex;
 			flex-wrap: wrap;
-			gap: 1rem;
+			gap: var(--space-4);
 
 			@media (max-width: 768px) {
 				justify-content: center;
@@ -1017,40 +1181,30 @@ td.views-field-field-gsr-puid a {
 		li {
 			&:not(:last-child)::after {
 				content: "|";
-				margin-left: 1rem;
-				color: #666666;
+				margin-left: var(--space-4);
+				color: var(--color-neutral-60);
 			}
 		}
 	}
 
-	.copyright-text {
+	.pt-subfooter__copy {
 		text-align: center;
 		margin: 0;
 	}
 
-	.col-md-4 {
-		&:nth-child(2) {
+	.pt-subfooter__shield {
+		text-align: right;
+
+		@media (max-width: 768px) {
 			text-align: center;
-		}
-
-		&:last-child {
-			text-align: right;
-
-			@media (max-width: 768px) {
-				text-align: center;
-			}
 		}
 
 		img {
 			filter: brightness(0) invert(1);
-			width: 186px;
-			height: 56px;
+			width: 3.5rem;
+			height: auto;
+			display: inline-block;
 		}
-	}
-
-	.pu-logo, .no-border {
-		display: inline-block;
-		border: none;
 	}
 
 	ul {
@@ -1118,7 +1272,7 @@ td.views-field-field-gsr-puid a {
 	display: inline-flex;
 	align-items: stretch;
 	flex: 0 0 auto;
-	border-radius: 6px;
+	border-radius: var(--radius-sm);
 	overflow: hidden;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -1183,18 +1337,7 @@ td.views-field-field-gsr-puid a {
 	border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-/* Remove: destructive red, pushed to the far right of the row.
-   Claro's .button rules set both background-color AND a gradient
-   background-image and carry enough specificity to fight a plain
-   class selector — so we chain .remove-button.button and use
-   !important on the gradient/color/margin lines that Claro touches.
-   The ✕ glyph is prepended to the input's value attribute by
-   _siempre_field_submission_file_after_build(). */
-/* Make the file-pill / remove-button row span the field width and
-   anchor its children to opposing edges. The .form-managed-file
-   wrapper carries .is-single which Claro renders inline-flex, so
-   without explicit width on __main the row only stretches to the
-   content width and margin-left: auto has no slack to push into. */
+/* Remove: destructive red, pushed to the far right of the row. */
 .form-managed-file.is-single {
 	display: block !important;
 	width: 100% !important;
@@ -1215,7 +1358,7 @@ td.views-field-field-gsr-puid a {
 	color: #b91c1c !important;
 	border: 1.5px solid #b91c1c !important;
 	padding: 0.55em 1.1em !important;
-	border-radius: 4px !important;
+	border-radius: var(--radius-sm) !important;
 	font-weight: 600 !important;
 	text-transform: none !important;
 	text-shadow: none !important;
