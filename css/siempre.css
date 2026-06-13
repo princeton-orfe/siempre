@@ -1234,4 +1234,94 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   text-decoration: none;
 }
 
+/* Graduate Student Record node edit/add forms custom styles */
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Container grid */
+}
+form.node-graduate-student-record-form .fieldset__wrapper,
+form.node-graduate-student-record-edit-form .fieldset__wrapper,
+form.node-graduate-student-record-add-form .fieldset__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+}
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Individual field styling */
+}
+form.node-graduate-student-record-form .field,
+form.node-graduate-student-record-edit-form .field,
+form.node-graduate-student-record-add-form .field {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  background: var(--siempre-accent-lightest, #FFF7F2); /* Soft accent tint */
+  border: 1px solid var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15)); /* Subtle accent border */
+  border-radius: 6px;
+  box-shadow: 0 1px 3px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15));
+  transition: box-shadow 0.3s ease;
+}
+form.node-graduate-student-record-form .field:hover,
+form.node-graduate-student-record-edit-form .field:hover,
+form.node-graduate-student-record-add-form .field:hover {
+  box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.25));
+}
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Label styling */
+}
+form.node-graduate-student-record-form .field__label,
+form.node-graduate-student-record-edit-form .field__label,
+form.node-graduate-student-record-add-form .field__label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--siempre-accent-darker, rgb(109, 46, 3)); /* Darker accent label */
+  font-size: 0.95rem;
+}
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Value styling */
+}
+form.node-graduate-student-record-form .field__item,
+form.node-graduate-student-record-edit-form .field__item,
+form.node-graduate-student-record-add-form .field__item {
+  color: #333;
+  white-space: pre-line;
+  font-size: 1rem;
+}
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Expand long content across both columns */
+}
+form.node-graduate-student-record-form .field--type-string-long,
+form.node-graduate-student-record-form .field--type-text-long,
+form.node-graduate-student-record-edit-form .field--type-string-long,
+form.node-graduate-student-record-edit-form .field--type-text-long,
+form.node-graduate-student-record-add-form .field--type-string-long,
+form.node-graduate-student-record-add-form .field--type-text-long {
+  grid-column: span 2;
+}
+form.node-graduate-student-record-form,
+form.node-graduate-student-record-edit-form,
+form.node-graduate-student-record-add-form {
+  /* Legend styling */
+}
+form.node-graduate-student-record-form .fieldset__legend,
+form.node-graduate-student-record-edit-form .fieldset__legend,
+form.node-graduate-student-record-add-form .fieldset__legend {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--siempre-accent-darker, rgb(109, 46, 3)); /* Darker accent legend */
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--siempre-accent-darker, rgb(109, 46, 3));
+  padding-bottom: 0.25rem;
+}
+
 /*# sourceMappingURL=siempre.css.map */
