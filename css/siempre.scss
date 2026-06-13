@@ -783,18 +783,30 @@ input[type="submit"] {
 	}
 }
 
+/* Site-wide Header Container */
+.site-header {
+	position: relative !important;
+	max-width: 1200px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: 100% !important;
+}
+
 /* Site branding - handle logo layout and sizing */
 .site-branding {
 	display: flex !important;
 	flex-direction: column !important;
-	align-items: center !important;
-	align-self: flex-start !important;
+	align-items: center !important; /* slogan is center-aligned relative to logo */
+	align-self: flex-start !important; /* left-aligned on wide screens */
+	margin-left: 0 !important;
+	margin-right: auto !important;
 	gap: 0.5rem !important;
 	margin-bottom: 1.5rem !important;
 	margin-top: 1rem !important;
 
 	@media (max-width: 768px) {
 		align-items: center !important;
+		align-self: center !important;
 		text-align: center !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
@@ -867,6 +879,51 @@ input[type="submit"] {
 	}
 }
 
+/* Utility Menu (Account Menu) placement */
+#block-siempre-account-menu {
+	@media (min-width: 769px) {
+		position: absolute !important;
+		top: 1.5rem !important;
+		right: 15px !important;
+		z-index: 999 !important;
+	}
+
+	ul.menu {
+		padding: 0 !important;
+
+		> li > a {
+			color: var(--color-neutral-60, #717171) !important;
+			font-family: var(--font-label, sans-serif) !important;
+			font-size: 0.85rem !important;
+			font-weight: 500 !important;
+			padding: 0.5rem 0.75rem !important;
+
+			&::after {
+				display: none !important; /* Remove the scaling hover underline for utility menu */
+			}
+
+			&:hover,
+			&:focus {
+				color: var(--siempre-accent, #e77500) !important;
+				background-color: transparent !important;
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		position: static !important;
+		margin: 0.5rem auto !important;
+		display: flex !important;
+		justify-content: center !important;
+		width: 100% !important;
+
+		ul.menu {
+			justify-content: center !important;
+			padding: 0 !important;
+		}
+	}
+}
+
 /* Remove text underline from all menus */
 ul.menu a {
 	text-decoration: none !important;
@@ -891,7 +948,8 @@ ul.menu {
 		list-style: none !important;
 		list-style-type: none !important;
 
-		> a {
+		> a,
+		> span {
 			color: var(--color-ink, #333333) !important;
 			background-color: transparent !important;
 			font-family: var(--font-display, sans-serif) !important;
@@ -900,6 +958,7 @@ ul.menu {
 			position: relative !important;
 			display: block !important;
 			transition: color 0.2s ease !important;
+			cursor: pointer !important;
 
 			&::after {
 				content: "" !important;
@@ -936,10 +995,12 @@ ul.menu {
 		-webkit-backdrop-filter: blur(15px);
 		border-top: 3px solid var(--siempre-accent, #e77500) !important;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+		margin: 0 !important;
 
 		li {
 			list-style: none !important;
 			list-style-type: none !important;
+			width: 100% !important;
 		}
 
 		a {
@@ -948,12 +1009,69 @@ ul.menu {
 			font-weight: 400 !important;
 			font-size: 0.9rem !important;
 			padding: 0.75rem 1.5rem !important;
+			display: block !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
 
 			&:hover,
 			&:focus,
 			&.is-active {
 				color: var(--siempre-accent, #e77500) !important;
 				background-color: rgba(255, 255, 255, 0.05) !important;
+			}
+		}
+	}
+
+	@media (min-width: 769px) {
+		> li {
+			position: relative !important;
+
+			&:hover > ul,
+			&:focus-within > ul {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+		}
+
+		ul {
+			position: absolute !important;
+			top: 100% !important;
+			left: 0 !important;
+			z-index: 1000 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			min-width: 240px !important;
+			opacity: 0 !important;
+			visibility: hidden !important;
+			transform: translateY(10px) !important;
+			transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease !important;
+		}
+	}
+
+	@media (max-width: 768px) {
+		ul {
+			display: block !important;
+			position: static !important;
+			width: 100% !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			transform: none !important;
+			box-shadow: none !important;
+			border-top: none !important;
+			background: rgba(0, 0, 0, 0.05) !important;
+			padding: 0.5rem 0 !important;
+
+			a {
+				color: var(--color-ink, #333333) !important;
+				text-align: center !important;
+				padding: 0.5rem 1rem !important;
+
+				&:hover,
+				&:focus,
+				&.is-active {
+					background-color: rgba(0, 0, 0, 0.05) !important;
+				}
 			}
 		}
 	}
