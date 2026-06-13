@@ -1314,15 +1314,9 @@ body.page-node-type-graduate-student-record {
 		display: flex;
 		flex-direction: column;
 		padding: 0.75rem;
-		background: var(--siempre-accent-lightest, #FFF7F2); /* Soft accent tint */
+		background: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)); /* Soft transparent accent tint */
 		border: 1px solid var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15)); /* Subtle accent border */
 		border-radius: 6px;
-		box-shadow: 0 1px 3px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15));
-		transition: box-shadow 0.3s ease;
-	}
-
-	.field:hover {
-		box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.25));
 	}
 
 	/* Label styling */
