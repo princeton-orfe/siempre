@@ -1298,10 +1298,9 @@ td.views-field-field-gsr-puid a {
 	}
 }
 
-/* Graduate Student Record node edit/add forms custom styles */
-form.node-graduate-student-record-form,
-form.node-graduate-student-record-edit-form,
-form.node-graduate-student-record-add-form {
+/* Graduate Student Record node view page custom styles */
+body.node-type-graduate-student-record,
+body.page-node-type-graduate-student-record {
 	/* Container grid */
 	.fieldset__wrapper {
 		display: grid;
