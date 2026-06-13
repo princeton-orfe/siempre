@@ -794,18 +794,78 @@ input[type="submit"] {
 	}
 }
 
-/* Main menu - override hardcoded colors */
+/* Main menu - design consistent with paper-tiger */
 ul.menu {
-	background-color: var(--siempre-accent, #e77500) !important;
-	box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(231, 117, 0,0.15)) !important;
+	background: rgba(18, 18, 18, 0.95) !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
+	padding: 0 1rem !important;
+	display: flex !important;
+	flex-wrap: wrap !important;
 
-	> li > a {
-		color: #ffffff !important;
+	> li {
+		margin: 0 !important;
+		padding: 0 !important;
 
-		&:hover,
-		&:focus {
-			background-color: var(--siempre-accent-light, #F7964A) !important;
+		> a {
 			color: #ffffff !important;
+			background-color: transparent !important;
+			font-family: var(--font-display, sans-serif) !important;
+			font-weight: 600 !important;
+			padding: 1rem 1.25rem !important;
+			position: relative !important;
+			display: block !important;
+			transition: color 0.2s ease !important;
+
+			&::after {
+				content: "" !important;
+				position: absolute !important;
+				bottom: 0 !important;
+				left: 1.25rem !important;
+				right: 1.25rem !important;
+				height: 3px !important;
+				background-color: var(--siempre-accent, #e77500) !important;
+				transform: scaleX(0) !important;
+				transition: transform 0.3s ease !important;
+				transform-origin: center !important;
+			}
+
+			&:hover,
+			&:focus,
+			&.is-active {
+				color: var(--siempre-accent, #e77500) !important;
+				background-color: transparent !important;
+
+				&::after {
+					transform: scaleX(1) !important;
+				}
+			}
+		}
+	}
+
+	/* Submenus (nested dropdowns) */
+	ul {
+		background: rgba(29, 29, 29, 0.98) !important;
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
+		border-top: 3px solid var(--siempre-accent, #e77500) !important;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+
+		a {
+			color: #ffffff !important;
+			font-family: var(--font-label, sans-serif) !important;
+			font-weight: 400 !important;
+			font-size: 0.9rem !important;
+			padding: 0.75rem 1.5rem !important;
+
+			&:hover,
+			&:focus,
+			&.is-active {
+				color: var(--siempre-accent, #e77500) !important;
+				background-color: rgba(255, 255, 255, 0.05) !important;
+			}
 		}
 	}
 }
