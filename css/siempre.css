@@ -769,6 +769,8 @@ input[type=submit]:focus {
 
 /* Main menu - design consistent with paper-tiger */
 ul.menu {
+  list-style: none !important;
+  list-style-type: none !important;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -781,6 +783,8 @@ ul.menu {
 ul.menu > li {
   margin: 0 !important;
   padding: 0 !important;
+  list-style: none !important;
+  list-style-type: none !important;
 }
 ul.menu > li > a {
   color: var(--color-ink, #333333) !important;
@@ -815,11 +819,17 @@ ul.menu {
   /* Submenus (nested dropdowns) */
 }
 ul.menu ul {
+  list-style: none !important;
+  list-style-type: none !important;
   background: rgba(29, 29, 29, 0.98) !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-top: 3px solid var(--siempre-accent, #e77500) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+ul.menu ul li {
+  list-style: none !important;
+  list-style-type: none !important;
 }
 ul.menu ul a {
   color: #ffffff !important;
