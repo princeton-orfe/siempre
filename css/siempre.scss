@@ -864,9 +864,11 @@ input[type="submit"] {
 .pre-content-wrapper {
 	display: block !important;
 	width: 100% !important;
+	margin-bottom: 1.5rem !important; /* Spacing between wide menu and main content */
 
 	@media (max-width: 768px) {
 		display: none !important;
+		margin-bottom: 0 !important;
 		position: absolute !important;
 		top: 4.5rem !important; /* right below the hamburger icon */
 		right: 15px !important;
@@ -895,7 +897,6 @@ input[type="submit"] {
 	align-self: flex-start !important; /* left-aligned on wide screens */
 	margin-left: 0 !important;
 	margin-right: auto !important;
-	margin-bottom: 1.5rem !important;
 	margin-top: 1rem !important;
 
 	@media (max-width: 768px) {
