@@ -841,6 +841,11 @@ input[type=submit]:focus {
 @media (max-width: 768px) {
   .pre-content-wrapper {
     display: none !important;
+    position: absolute !important;
+    top: 4.5rem !important; /* right below the hamburger icon */
+    right: 15px !important;
+    width: 280px !important;
+    z-index: 1001 !important;
     box-sizing: border-box !important;
   }
 }
@@ -849,9 +854,11 @@ input[type=submit]:focus {
   .mobile-menu-active .pre-content-wrapper {
     display: block !important;
     background-color: rgba(255, 255, 255, 0.98) !important;
-    padding: 1rem 0 !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    padding: 0.5rem 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-top: 3px solid var(--siempre-accent, #e77500) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 4px !important;
   }
 }
 
@@ -944,9 +951,10 @@ input[type=submit]:focus {
 @media (max-width: 768px) {
   .region-pre-content {
     flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
 }
 
@@ -962,13 +970,15 @@ input[type=submit]:focus {
 @media (max-width: 768px) {
   #block-siempre-account-menu {
     position: static !important;
-    margin: 0.5rem auto !important;
-    display: flex !important;
-    justify-content: center !important;
+    margin: 0 !important;
+    display: block !important;
     width: 100% !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important; /* separator between main menu and utility menu */
+    padding-top: 0.5rem !important;
+    margin-top: 0.5rem !important;
   }
   #block-siempre-account-menu ul.menu {
-    justify-content: center !important;
+    justify-content: flex-start !important;
     padding: 0 !important;
   }
 }
@@ -991,11 +1001,24 @@ ul.menu {
   display: flex !important;
   flex-wrap: wrap !important;
 }
+@media (max-width: 768px) {
+  ul.menu {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
 ul.menu > li {
   margin: 0 !important;
   padding: 0 !important;
   list-style: none !important;
   list-style-type: none !important;
+}
+@media (max-width: 768px) {
+  ul.menu > li {
+    width: 100% !important;
+  }
 }
 ul.menu > li > a,
 ul.menu > li > span {
@@ -1034,6 +1057,18 @@ ul.menu > li > span:hover::after,
 ul.menu > li > span:focus::after,
 ul.menu > li > span.is-active::after {
   transform: scaleX(1) !important;
+}
+@media (max-width: 768px) {
+  ul.menu > li > a,
+  ul.menu > li > span {
+    padding: 0.75rem 1.5rem !important;
+    text-align: left !important;
+    font-size: 0.95rem !important;
+  }
+  ul.menu > li > a::after,
+  ul.menu > li > span::after {
+    display: none !important; /* Hide hover underline scale bar on mobile */
+  }
 }
 ul.menu {
   /* Submenus (nested dropdowns) - premium white/light background */
@@ -1113,8 +1148,8 @@ ul.menu ul span.is-active {
   ul.menu ul a,
   ul.menu ul span {
     color: var(--color-ink, #333333) !important;
-    text-align: center !important;
-    padding: 0.5rem 1rem !important;
+    text-align: left !important;
+    padding: 0.5rem 2.25rem !important;
   }
   ul.menu ul a:hover, ul.menu ul a:focus, ul.menu ul a.is-active,
   ul.menu ul span:hover,
