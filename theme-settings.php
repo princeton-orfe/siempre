@@ -20,7 +20,7 @@ function siempre_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   $form['siempre_settings']['accent_color'] = [
     '#type' => 'color',
     '#title' => t('Accent Color'),
-    '#default_value' => theme_get_setting('accent_color') ?? '#0036b1',
+    '#default_value' => theme_get_setting('accent_color') ?? '#e77500',
     '#description' => t('Select the primary accent color for the theme. This color will be used for links, menu backgrounds, and other accent elements. Complementary colors will be automatically derived.'),
   ];
 }

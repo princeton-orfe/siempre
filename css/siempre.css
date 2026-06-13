@@ -1,7 +1,18 @@
-/* Sticky footer layout */
+@charset "UTF-8";
+@import url("https://use.typekit.net/mxl1ncs.css");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap");
+/* Sticky footer layout and typography defaults */
 html, body {
   height: 100%;
   margin: 0;
+}
+
+body {
+  font-family: var(--font-body, Georgia, serif);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display, sans-serif);
 }
 
 .layout-container {
@@ -52,7 +63,7 @@ main.main-content {
 }
 
 .breadcrumb__item + .breadcrumb__item::before {
-  content: "\203A"; /* › */
+  content: "›"; /* › */
   margin: 0 0.5em;
   color: #b0b4bb;
 }
@@ -61,18 +72,23 @@ main.main-content {
   color: #6b7280;
   text-decoration: none;
 }
+
 .breadcrumb__link:hover,
 .breadcrumb__link:focus {
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
   text-decoration: underline;
 }
 
 /* Active main-menu indicator: a 3px accent-colored underline beneath
-   the current link (.is-active on the <a>, or .menu-item--active-trail
-   on an ancestor <li>). */
+   the current link. Drupal marks the link itself with .is-active and
+   any ancestor in the trail with .menu-item--active-trail; we match
+   both. Ships as an absolutely-positioned ::after so toggling the
+   indicator doesn't shift sibling items vertically. Scoped to the
+   main navigation block so secondary menus aren't affected. */
 #block-siempre-mainnavigation-menu a {
   position: relative;
 }
+
 #block-siempre-mainnavigation-menu a.is-active::after,
 #block-siempre-mainnavigation-menu .menu-item--active-trail > a::after {
   content: "";
@@ -81,19 +97,19 @@ main.main-content {
   right: 0.25em;
   bottom: -3px;
   height: 3px;
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
   border-radius: 2px;
-  box-shadow: 0 1px 2px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15));
+  box-shadow: 0 1px 2px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15));
 }
 
 /* Replace Claro's variable-driven margin on details bodies with a
-   fixed compact margin at the breakpoint Claro switches at. */
+   fixed compact margin at the breakpoint Claro switches at, so the
+   spacing matches the surrounding form chrome at the same width. */
 @media screen and (min-width: 40.0625rem) {
   .claro-details__wrapper {
     margin: 0.5em 1em;
   }
 }
-
 .view-currently-logged-in-as {
   color: gray;
 }
@@ -106,14 +122,16 @@ main.main-content {
 .view-id-individual_submission_display .views-field-field-submission-report-type {
   margin: 1.5em 0;
 }
+
 .view-id-individual_submission_display .views-field-field-submission-report-type .field-content {
   margin: 0;
 }
+
 .view-id-individual_submission_display .views-field-field-submission-report-type a {
   display: inline-block;
   position: relative;
   padding: 0.75em 1.4em 0.75em 3em;
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
   color: #fff;
   font-size: 1.1em;
   font-weight: 600;
@@ -122,6 +140,7 @@ main.main-content {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
+
 .view-id-individual_submission_display .views-field-field-submission-report-type a::before {
   content: "";
   position: absolute;
@@ -135,9 +154,10 @@ main.main-content {
   background-size: contain;
   background-position: center;
 }
+
 .view-id-individual_submission_display .views-field-field-submission-report-type a:hover,
 .view-id-individual_submission_display .views-field-field-submission-report-type a:focus {
-  background-color: var(--siempre-accent-dark, #002780);
+  background-color: var(--siempre-accent-dark, #C1560E);
   color: #fff;
   text-decoration: none;
   transform: translateY(-1px);
@@ -148,11 +168,17 @@ main.main-content {
    heading, per-comment metadata footer, comment title, body, and
    reply actions. Each comment is a soft card with a left accent stripe
    that doubles as a threading indicator when comments are nested. */
+.field--name-field-submission-comments {
+  /* "Submission Comments" section heading. */
+}
 .field--name-field-submission-comments > h2.title {
   margin: 1.5em 0 0.75em;
   padding-bottom: 0.4em;
   font-size: 1.4em;
-  border-bottom: 2px solid var(--siempre-accent, #0036b1);
+  border-bottom: 2px solid var(--siempre-accent, #e77500);
+}
+.field--name-field-submission-comments {
+  /* "Add new comment" heading at the bottom. */
 }
 .field--name-field-submission-comments > h2.comment-form__title {
   margin-top: 2em;
@@ -165,8 +191,10 @@ main.main-content {
   padding: 0.75em 1em 0.9em;
   background-color: #fafbfc;
   border: 1px solid #e3e6ea;
-  border-left: 3px solid var(--siempre-accent, #0036b1);
+  border-left: 3px solid var(--siempre-accent, #e77500);
   border-radius: 0 4px 4px 0;
+  /* Metadata footer (Drupal puts <footer> ABOVE .content in the
+     markup but calls it footer; we treat it as a header strip). */
 }
 .field--name-field-submission-comments .comment .comment__meta {
   margin: 0 0 0.75em;
@@ -184,6 +212,9 @@ main.main-content {
   padding-left: 0.5em;
   border-left: 1px solid #ccc;
 }
+.field--name-field-submission-comments .comment .content {
+  /* Auto-generated comment title (truncated body preview). */
+}
 .field--name-field-submission-comments .comment .content > h3 {
   margin: 0 0 0.5em;
   font-size: 1.05em;
@@ -194,9 +225,14 @@ main.main-content {
   color: inherit;
   text-decoration: none;
 }
-.field--name-field-submission-comments .comment .content > h3 a.permalink:hover,
-.field--name-field-submission-comments .comment .content > h3 a.permalink:focus {
+.field--name-field-submission-comments .comment .content > h3 a.permalink:hover, .field--name-field-submission-comments .comment .content > h3 a.permalink:focus {
   text-decoration: underline;
+}
+.field--name-field-submission-comments .comment .content {
+  /* The comment body itself. */
+}
+.field--name-field-submission-comments .comment .content .field--name-comment-body {
+  /* The "Comment" field label is redundant inside a comment. */
 }
 .field--name-field-submission-comments .comment .content .field--name-comment-body .field__label {
   display: none;
@@ -210,23 +246,25 @@ main.main-content {
 .field--name-field-submission-comments .comment .content .field--name-comment-body .field__item p:last-child {
   margin-bottom: 0;
 }
-/* Reply / Edit / Delete action links. Force `display: block` because
-   Drupal's `.links.inline` defaults to display: inline, which silently
-   ignores vertical margin/padding and makes the border-top span only
-   the inline-content width. */
+.field--name-field-submission-comments .comment .content {
+  /* Reply / Edit / Delete action links. Force `display: block`
+     because Drupal's `.links.inline` defaults to display: inline,
+     which silently ignores vertical margin/padding and makes
+     the border-top span only the inline-content width. */
+}
 .field--name-field-submission-comments .comment .content .links.inline {
   display: block;
   margin: 1.5em 0 0;
   padding-top: 1em;
   border-top: 1px dashed #e8eaed;
   font-size: 0.9em;
+  /* Reply: styled as a primary button. Other action items
+     (Edit, Delete) keep their plain-link styling. */
 }
-/* Reply: styled as a primary button. Other action items (Edit, Delete)
-   keep their plain-link styling. */
 .field--name-field-submission-comments .comment .content .links.inline li.comment-reply a {
   display: inline-block;
   padding: 0.4em 0.9em;
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -235,15 +273,28 @@ main.main-content {
 }
 .field--name-field-submission-comments .comment .content .links.inline li.comment-reply a:hover,
 .field--name-field-submission-comments .comment .content .links.inline li.comment-reply a:focus {
-  background-color: var(--siempre-accent-dark, #002780);
+  background-color: var(--siempre-accent-dark, #C1560E);
   color: #fff;
   text-decoration: none;
+}
+.field--name-field-submission-comments .comment {
+  /* Comments authored by the node's author (the student/submitter)
+     get a green left stripe so it's instantly clear who's talking. */
 }
 .field--name-field-submission-comments .comment.by-node-author {
   border-left-color: #2e7d32;
 }
+.field--name-field-submission-comments .comment {
+  /* Comments authored by the current viewer get a faint tint so
+     you can quickly find your own in the thread. */
+}
 .field--name-field-submission-comments .comment.by-viewer {
   background-color: #f0f7ff;
+}
+.field--name-field-submission-comments {
+  /* Threaded replies. Drupal wraps nested comments in .indented.
+     Stack the indent + dashed guide rail so multi-level threads stay
+     legible. */
 }
 .field--name-field-submission-comments .indented {
   margin: -0.25em 0 0 1.5em;
@@ -274,16 +325,18 @@ html {
   margin: 0;
   padding: 0.6em 1em;
   background-color: #fff;
-  box-shadow: 0 2px 4px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15));
-  border-top: 1px solid var(--siempre-accent, #0036b1);
-  border-bottom: 1px solid var(--siempre-accent, #0036b1);
+  box-shadow: 0 2px 4px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15));
+  border-top: 1px solid var(--siempre-accent, #e77500);
+  border-bottom: 1px solid var(--siempre-accent, #e77500);
   font-size: 0.95em;
 }
+
 .jump-to-nav__label {
   font-weight: 600;
   color: #444;
   white-space: nowrap;
 }
+
 .jump-to-nav__list {
   display: flex;
   flex-wrap: wrap;
@@ -294,24 +347,32 @@ html {
   list-style: none;
   flex: 1 1 auto;
 }
+
 .jump-to-nav__item {
   margin: 0;
   padding: 0;
 }
+
 .jump-to-nav__link {
   display: inline-block;
   padding: 0.2em 0.6em;
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
+
 .jump-to-nav__link:hover,
 .jump-to-nav__link:focus {
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
   color: #fff;
   text-decoration: none;
 }
+
+/* Back-to-Top is always in the DOM but hidden until the user has
+   scrolled far enough; jump-to.js toggles .jump-to-nav--scrolled on
+   the parent nav to reveal it. margin-left: auto pushes it to the
+   far end of the flex row. */
 .jump-to-nav__item--back-to-top {
   margin-left: auto;
   opacity: 0;
@@ -319,18 +380,24 @@ html {
   transform: translateY(-2px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
+
 .jump-to-nav--scrolled .jump-to-nav__item--back-to-top {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
+
 .jump-to-nav__link--back-to-top {
   font-weight: 600;
 }
+
 .jump-to-nav__link--back-to-top::before {
-  content: "\2191";
+  content: "↑";
   margin-right: 0.3em;
 }
+
+/* Keep the landing H2 below the sticky bar after a jump. The bar is
+   roughly 2.5em tall depending on viewport; pad generously. */
 main.main-content h2 {
   scroll-margin-top: 4.5em;
 }
@@ -344,12 +411,7 @@ main.main-content h2 {
 .user-form--update-photos {
   display: grid;
   grid-template-columns: 220px 1fr;
-  grid-template-areas:
-    "picture netid"
-    "picture firstname"
-    "picture lastname"
-    "picture showondisplay"
-    "actions actions";
+  grid-template-areas: "picture netid" "picture firstname" "picture lastname" "picture showondisplay" "actions actions";
   gap: 1em 2em;
   max-width: 720px;
   margin: 1.5em auto;
@@ -362,6 +424,8 @@ main.main-content h2 {
 }
 .user-form--update-photos .field--name-user-picture {
   grid-area: picture;
+  /* Drupal wraps the picture widget in a details element with a
+     redundant "Picture" summary; flatten it visually. */
 }
 .user-form--update-photos .field--name-user-picture > details {
   padding: 0;
@@ -386,6 +450,9 @@ main.main-content h2 {
   font-size: 0.85em;
   color: #555;
 }
+.user-form--update-photos .field--name-user-picture {
+  /* "Crop image" controls — keep accessible but visually quiet. */
+}
 .user-form--update-photos .field--name-user-picture .image-data__crop-wrapper {
   margin-top: 0.75em;
   font-size: 0.9em;
@@ -399,12 +466,10 @@ main.main-content h2 {
 .user-form--update-photos .user-form__netid {
   grid-area: netid;
   padding: 0.4em 0.6em;
-  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
-  border-left: 3px solid var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05));
+  border-left: 3px solid var(--siempre-accent, #e77500);
   border-radius: 0 4px 4px 0;
   font-size: 0.95em;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: #222;
 }
 .user-form--update-photos .user-form__netid .form-item__label {
   display: inline;
@@ -416,14 +481,20 @@ main.main-content h2 {
 .user-form--update-photos .user-form__netid .form-item__label::after {
   content: ":";
 }
+.user-form--update-photos .user-form__netid {
+  /* The #markup of an #type=item lands as a text node next to the
+     label; style the text-runs we get back. */
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #222;
+}
 .user-form--update-photos .field--name-field-account-first-name {
   grid-area: firstname;
 }
 .user-form--update-photos .field--name-field-account-last-name {
   grid-area: lastname;
 }
-.user-form--update-photos .field--name-field-account-first-name input[type="text"],
-.user-form--update-photos .field--name-field-account-last-name input[type="text"] {
+.user-form--update-photos .field--name-field-account-first-name input[type=text],
+.user-form--update-photos .field--name-field-account-last-name input[type=text] {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -450,23 +521,18 @@ main.main-content h2 {
   align-items: center;
   gap: 1em;
 }
+
+/* Collapse to single column on narrow viewports. */
 @media (max-width: 600px) {
   .user-form--update-photos {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "picture"
-      "netid"
-      "firstname"
-      "lastname"
-      "showondisplay"
-      "actions";
+    grid-template-areas: "picture" "netid" "firstname" "lastname" "showondisplay" "actions";
   }
   .user-form--update-photos .field--name-user-picture {
     max-width: 240px;
     margin: 0 auto;
   }
 }
-
 /* Hide the primary tabs (View / Edit / Delete / Revisions) on every
    report-node route. Drupal puts a `page-node-type-report` class on
    <body> for view, edit, delete, and revisions pages of report nodes,
@@ -495,14 +561,16 @@ main.main-content h2 {
 .node-form .grade-region {
   margin: 1em 0;
   padding: 0.25em 1em;
-  border-left: 3px solid var(--siempre-accent, #0036b1);
-  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05));
+  border-left: 3px solid var(--siempre-accent, #e77500);
+  background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05));
 }
+
 .node-form .grade-region::after {
   content: "";
   display: block;
   clear: both;
 }
+
 .node-form .grade-region > .form-item > .form-item__label {
   font-weight: 600;
 }
@@ -532,7 +600,6 @@ main.main-content h2 {
     clear: both;
   }
 }
-
 /* Collapsible wrapper around the "List of Advisee(s)" view block.
    We hide the browser-supplied disclosure marker and draw our own via
    ::before so we can resize and theme it. Flexbox on the summary lines
@@ -554,14 +621,16 @@ main.main-content h2 {
   content: "▶";
   font-size: 1.25em;
   line-height: 1;
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
   transform: translateY(-0.08em);
   transition: transform 0.15s ease;
 }
+
 .advisee-list-disclosure > summary > h2 {
   display: inline;
   margin: 0;
 }
+
 .advisee-list-disclosure[open] > summary::before {
   transform: translateY(-0.08em) rotate(90deg);
 }
@@ -586,36 +655,42 @@ main.main-content h2 {
 }
 .view-id-list_of_advisee_s_ .views-row {
   display: contents;
+  /* .views-row carries .clearfix, whose ::after pseudo-element would
+     otherwise become a grid item under display:contents and offset
+     every row after the first by one column. */
 }
-/* .views-row carries .clearfix, whose ::after pseudo-element would
-   otherwise become a grid item under display:contents and offset every
-   row after the first by one column. */
-.view-id-list_of_advisee_s_ .views-row::before,
-.view-id-list_of_advisee_s_ .views-row::after {
+.view-id-list_of_advisee_s_ .views-row::before, .view-id-list_of_advisee_s_ .views-row::after {
   content: none;
 }
 .view-id-list_of_advisee_s_ .views-col {
+  /* Override the inline style="width: 25%;" Views injects on each
+     cell so it lays out as a real grid item. */
   width: auto !important;
   padding: 0.05em 0;
   font-size: 0.95rem;
   line-height: 1.35;
 }
 .view-id-list_of_advisee_s_ .views-col a {
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
   text-decoration: none;
 }
-.view-id-list_of_advisee_s_ .views-col a:hover,
-.view-id-list_of_advisee_s_ .views-col a:focus {
+.view-id-list_of_advisee_s_ .views-col a:hover, .view-id-list_of_advisee_s_ .views-col a:focus {
   text-decoration: underline;
 }
 @media (max-width: 900px) {
-  .view-id-list_of_advisee_s_ .views-view-grid { grid-template-columns: repeat(3, 1fr); }
+  .view-id-list_of_advisee_s_ .views-view-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 640px) {
-  .view-id-list_of_advisee_s_ .views-view-grid { grid-template-columns: repeat(2, 1fr); }
+  .view-id-list_of_advisee_s_ .views-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 420px) {
-  .view-id-list_of_advisee_s_ .views-view-grid { grid-template-columns: 1fr; }
+  .view-id-list_of_advisee_s_ .views-view-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .csv-feed.views-data-export-feed {
@@ -624,91 +699,101 @@ main.main-content h2 {
 
 /* Accent color usage for links and UI elements */
 a {
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
 }
 a:hover, a:focus {
-  color: var(--siempre-accent-dark, #002780);
+  color: var(--siempre-accent-dark, #C1560E);
 }
 a:visited {
-  color: var(--siempre-accent-darker, #001a50);
+  color: var(--siempre-accent-darker, #6D2E03);
+}
+
+/* Keyboard focus ring styling based on Paper Tiger guidance */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-focus-outline, #3b99fc) !important;
+  outline-offset: 2px !important;
 }
 
 /* Menu and navigation backgrounds */
 .toolbar-bar,
 .toolbar-menu-administration {
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
 }
 
 /* Normalize links in table bodies to accent blue on white backgrounds */
 .views-table td a,
 table.views-view-table td a,
 .view-content table td a {
-  color: var(--siempre-accent, #0036b1);
+  color: var(--siempre-accent, #e77500);
 }
 .views-table td a:hover, .views-table td a:focus,
 table.views-view-table td a:hover,
 table.views-view-table td a:focus,
 .view-content table td a:hover,
 .view-content table td a:focus {
-  color: var(--siempre-accent-dark, #002780);
+  color: var(--siempre-accent-dark, #C1560E);
 }
 .views-table td a:visited,
 table.views-view-table td a:visited,
 .view-content table td a:visited {
-  color: var(--siempre-accent-darker, #001a50);
+  color: var(--siempre-accent-darker, #6D2E03);
 }
 
 /* Button accent colors */
 .button--primary,
 input[type=submit] {
-  background-color: var(--siempre-accent, #0036b1) !important;
-  border-color: var(--siempre-accent-dark, #002780) !important;
+  background-color: var(--siempre-accent, #e77500) !important;
+  border-color: var(--siempre-accent-dark, #C1560E) !important;
   color: #ffffff !important;
 }
 .button--primary:hover, .button--primary:focus,
 input[type=submit]:hover,
 input[type=submit]:focus {
-  background-color: var(--siempre-accent-dark, #002780) !important;
-  border-color: var(--siempre-accent-darker, #001a50) !important;
+  background-color: var(--siempre-accent-dark, #C1560E) !important;
+  border-color: var(--siempre-accent-darker, #6D2E03) !important;
   color: #ffffff !important;
 }
 
 /* Site branding - override hardcoded colors */
 .site-name a {
-  color: var(--siempre-accent, #0036b1) !important;
-  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+  color: var(--siempre-accent, #e77500) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
 }
 .site-name a:hover, .site-name a:focus {
-  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+  background-color: var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
 }
 
 /* Main menu - override hardcoded colors */
 ul.menu {
-  background-color: var(--siempre-accent, #0036b1) !important;
-  box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(0, 54, 177, 0.15)) !important;
+  background-color: var(--siempre-accent, #e77500) !important;
+  box-shadow: 0 2px 6px var(--siempre-accent-shadow, rgba(231, 117, 0, 0.15)) !important;
 }
 ul.menu > li > a {
   color: #ffffff !important;
 }
 ul.menu > li > a:hover, ul.menu > li > a:focus {
-  background-color: var(--siempre-accent-light, #1a4dc4) !important;
+  background-color: var(--siempre-accent-light, #F7964A) !important;
   color: #ffffff !important;
 }
 
 /* Horizontal tabs - override Claro variables */
 .is-horizontal .tabs__link {
-  color: var(--siempre-accent, #0036b1) !important;
+  color: var(--siempre-accent, #e77500) !important;
 }
 .is-horizontal .tabs__link:hover, .is-horizontal .tabs__link:focus {
-  color: var(--siempre-accent-dark, #002780) !important;
-  background: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+  color: var(--siempre-accent-dark, #C1560E) !important;
+  background: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
 }
 .is-horizontal .tabs__link.is-active {
-  color: var(--siempre-accent, #0036b1) !important;
-  border-color: var(--siempre-accent, #0036b1) !important;
+  color: var(--siempre-accent, #e77500) !important;
+  border-color: var(--siempre-accent, #e77500) !important;
 }
 .is-horizontal .tabs__link.is-active::before {
-  border-bottom-color: var(--siempre-accent, #0036b1) !important;
+  border-bottom-color: var(--siempre-accent, #e77500) !important;
 }
 
 /* Sortable table headings */
@@ -716,68 +801,68 @@ ul.menu > li > a:hover, ul.menu > li > a:focus {
   color: var(--siempre-accent-dark, inherit) !important;
 }
 .sortable-heading > a:hover, .sortable-heading > a:focus {
-  color: var(--siempre-accent, #0036b1) !important;
+  color: var(--siempre-accent, #e77500) !important;
 }
 
 .sortable-heading.is-active > a {
-  color: var(--siempre-accent, #0036b1) !important;
+  color: var(--siempre-accent, #e77500) !important;
 }
 
 /* Checkboxes */
 .form-boolean--type-checkbox:checked {
-  border-color: var(--siempre-accent, #0036b1) !important;
-  background-color: var(--siempre-accent, #0036b1) !important;
+  border-color: var(--siempre-accent, #e77500) !important;
+  background-color: var(--siempre-accent, #e77500) !important;
 }
 
 .form-boolean--type-checkbox:focus {
-  border-color: var(--siempre-accent, #0036b1) !important;
-  box-shadow: 0 0 0 2px var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+  border-color: var(--siempre-accent, #e77500) !important;
+  box-shadow: 0 0 0 2px var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
 }
 
 /* Details summary */
 .claro-details__summary:hover {
-  color: var(--siempre-accent, #0036b1) !important;
-  background-color: var(--siempre-accent-bg-light, rgba(0, 54, 177, 0.05)) !important;
+  color: var(--siempre-accent, #e77500) !important;
+  background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
 }
 
 /* GSR PUID links - special button style */
 td.views-field-field-gsr-puid a {
-  background-color: var(--siempre-accent-bg-light, #f4f0ff) !important;
-  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
-  border-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  background-color: var(--siempre-accent-bg-light, #FFF7F2) !important;
+  color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
+  border-color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
 }
 td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
-  background-color: var(--siempre-accent-bg-medium, rgba(0, 54, 177, 0.1)) !important;
+  background-color: var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
   transform: translateY(-2px) !important;
 }
 
 /* Edit node buttons */
 .views-field-edit-node a {
-  background-color: var(--siempre-accent-lightest, rgb(220, 210, 250)) !important;
-  color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  background-color: var(--siempre-accent-lightest, rgb(255, 247, 242)) !important;
+  color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
 }
 .views-field-edit-node a:hover, .views-field-edit-node a:focus {
-  background-color: var(--siempre-accent-lighter, rgb(230, 220, 255)) !important;
-  color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  background-color: var(--siempre-accent-lighter, rgb(254, 236, 222)) !important;
+  color: var(--siempre-accent-darkest, rgb(65, 28, 2)) !important;
   transform: translateY(-2px) !important;
 }
 
 /* Mailto buttons */
 .mailto-button {
-  background-color: var(--siempre-accent-dark, #6a0dad) !important;
+  background-color: var(--siempre-accent-dark, #C1560E) !important;
   color: #ffffff !important;
 }
 .mailto-button:hover, .mailto-button:focus {
-  background-color: var(--siempre-accent-darker, #5209a0) !important;
+  background-color: var(--siempre-accent-darker, #6D2E03) !important;
 }
 
 /* ORFE action buttons */
 .custom-orfe-actions a {
-  background-color: var(--siempre-accent-darker, rgb(53, 0, 141)) !important;
+  background-color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
   color: #fff !important;
 }
 .custom-orfe-actions a:hover, .custom-orfe-actions a:focus {
-  background-color: var(--siempre-accent-darkest, rgb(40, 0, 110)) !important;
+  background-color: var(--siempre-accent-darkest, rgb(65, 28, 2)) !important;
   transform: translateY(-2px) !important;
 }
 
@@ -960,7 +1045,9 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
    and file size on the right (darker accent shade), with the Remove
    action pushed to the far right of the row as a destructive red
    button. Core's per-mime PDF icon is suppressed; the inline SVG is
-   the only visual cue. ".pdf" extension is stripped at preprocess. */
+   the only visual cue. The ".pdf" extension is stripped at preprocess
+   in siempre_preprocess_file_link(). Form structure (Remove submit
+   input + hidden fids) is untouched. */
 .form-managed-file__main {
   display: flex;
   flex-wrap: wrap;
@@ -968,6 +1055,8 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   gap: 0.75em;
 }
 
+/* Suppress Drupal core's per-mime background-image icon + padding.
+   We supply our own SVG via the link's ::before. */
 .form-managed-file .file--application-pdf,
 .form-managed-file .file--mime-application-pdf,
 .form-managed-file .file--application-pdf::before,
@@ -976,6 +1065,9 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   padding-left: 0 !important;
 }
 
+/* The .file span becomes the segmented pill container. flex: 0 0 auto
+   keeps it at its natural width inside the space-between flex row so
+   it doesn't stretch into the gap before the Remove button. */
 .form-managed-file .file--application-pdf,
 .form-managed-file .file--mime-application-pdf {
   display: inline-flex;
@@ -986,6 +1078,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
 .form-managed-file .file--application-pdf:hover,
 .form-managed-file .file--application-pdf:focus-within,
 .form-managed-file .file--mime-application-pdf:hover,
@@ -994,19 +1087,21 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Left segment: filename link with the PDF SVG icon. */
 .form-managed-file .file--application-pdf a,
 .form-managed-file .file--mime-application-pdf a {
   display: inline-flex;
   align-items: center;
   position: relative;
   padding: 0.65em 1.1em 0.65em 2.9em;
-  background-color: var(--siempre-accent, #0036b1);
+  background-color: var(--siempre-accent, #e77500);
   color: #fff;
   font-size: 1.02em;
   font-weight: 600;
   text-decoration: none;
   transition: background-color 0.15s ease;
 }
+
 .form-managed-file .file--application-pdf a::before,
 .form-managed-file .file--mime-application-pdf a::before {
   content: "";
@@ -1021,32 +1116,48 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   background-size: contain;
   background-position: center;
 }
+
 .form-managed-file .file--application-pdf a:hover,
 .form-managed-file .file--application-pdf a:focus,
 .form-managed-file .file--mime-application-pdf a:hover,
 .form-managed-file .file--mime-application-pdf a:focus {
-  background-color: var(--siempre-accent-dark, #002780);
+  background-color: var(--siempre-accent-dark, #C1560E);
   color: #fff;
   text-decoration: none;
 }
 
+/* Right segment: file size, attached to the same pill in a darker
+   shade of the accent. Separator is a faint inner border. */
 .form-managed-file .file--application-pdf .file__size,
 .form-managed-file .file--mime-application-pdf .file__size {
   display: inline-flex;
   align-items: center;
   padding: 0 1em;
   margin-left: 0;
-  background-color: var(--siempre-accent-darker, #001a66);
+  background-color: var(--siempre-accent-darker, #6D2E03);
   color: rgba(255, 255, 255, 0.92);
   font-size: 0.85em;
   font-weight: 500;
   border-left: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* Remove: destructive red, pushed to the far right of the row.
+   Claro's .button rules set both background-color AND a gradient
+   background-image and carry enough specificity to fight a plain
+   class selector — so we chain .remove-button.button and use
+   !important on the gradient/color/margin lines that Claro touches.
+   The ✕ glyph is prepended to the input's value attribute by
+   _siempre_field_submission_file_after_build(). */
+/* Make the file-pill / remove-button row span the field width and
+   anchor its children to opposing edges. The .form-managed-file
+   wrapper carries .is-single which Claro renders inline-flex, so
+   without explicit width on __main the row only stretches to the
+   content width and margin-left: auto has no slack to push into. */
 .form-managed-file.is-single {
   display: block !important;
   width: 100% !important;
 }
+
 .form-managed-file__main {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -1055,6 +1166,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   gap: 0.75em !important;
   width: 100% !important;
 }
+
 .form-managed-file .remove-button.button,
 .form-managed-file .form-managed-file__main .remove-button.button {
   flex: 0 0 auto !important;
@@ -1070,6 +1182,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   box-shadow: none !important;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
+
 .form-managed-file .remove-button.button:hover,
 .form-managed-file .remove-button.button:focus,
 .form-managed-file .form-managed-file__main .remove-button.button:hover,
@@ -1100,7 +1213,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230036b1'><path d='M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e77500'><path d='M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z'/></svg>");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

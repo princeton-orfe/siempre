@@ -421,7 +421,7 @@ function siempre_preprocess_page_title(&$variables) {
  */
 function siempre_preprocess_html(&$variables) {
   // Get the accent color from theme settings.
-  $accent_color = theme_get_setting('accent_color') ?? '#0036b1';
+  $accent_color = theme_get_setting('accent_color') ?? '#e77500';
 
   // Calculate complementary colors.
   $colors = _siempre_calculate_color_variants($accent_color);
@@ -440,6 +440,11 @@ function siempre_preprocess_html(&$variables) {
       --siempre-accent-bg-light: {$colors['rgba_5']};
       --siempre-accent-bg-medium: {$colors['rgba_10']};
       --siempre-accent-shadow: {$colors['rgba_15']};
+      --color-focus-outline: #3b99fc;
+      --font-display: \"sofia-pro\", \"Source Sans 3\", \"Helvetica Neue\", Arial, sans-serif;
+      --font-body: \"abril-text\", \"Source Serif 4\", Georgia, \"Times New Roman\", serif;
+      --font-label: \"sofia-pro\", \"Source Sans 3\", \"Helvetica Neue\", Arial, sans-serif;
+      --font-ui: \"sofia-pro\", \"Source Sans 3\", \"Helvetica Neue\", Arial, sans-serif;
     }
   ";
 
@@ -456,24 +461,44 @@ function siempre_preprocess_html(&$variables) {
  * Calculate color variants from a base hex color.
  *
  * @param string $hex
- *   Hex color code (e.g., '#0036b1').
+ *   Hex color code (e.g., '#e77500').
  *
  * @return array
  *   Array of color variants.
  */
 function _siempre_calculate_color_variants($hex) {
-  // Convert hex to RGB.
   $hex = ltrim($hex, '#');
+  if ($hex === '') {
+    $hex = 'e77500';
+  }
+
   $r = hexdec(substr($hex, 0, 2));
   $g = hexdec(substr($hex, 2, 2));
   $b = hexdec(substr($hex, 4, 2));
 
-  // Convert RGB to HSL.
+  // If using the default Paper Tiger orange, return the exact tuned palette
+  if (strtolower($hex) === 'e77500') {
+    return [
+      'base' => '#e77500',      // Princeton Orange (brand-70)
+      'medium' => '#C1560E',    // brand-80 (used for primary hover)
+      'light' => '#F7964A',     // brand-60
+      'lighter' => '#FEECDE',   // brand-20
+      'lightest' => '#FFF7F2',  // brand-10
+      'dark' => '#C1560E',      // brand-80
+      'darker' => '#6D2E03',    // brand-90
+      'darkest' => '#411C02',   // brand-100
+      'rgba_5' => "rgba({$r}, {$g}, {$b}, 0.05)",
+      'rgba_10' => "rgba({$r}, {$g}, {$b}, 0.10)",
+      'rgba_15' => "rgba({$r}, {$g}, {$b}, 0.15)",
+    ];
+  }
+
+  // Convert RGB to HSL for custom accent colors
   $hsl = _siempre_rgb_to_hsl($r, $g, $b);
 
   // Create variants by adjusting lightness.
   $variants = [
-    'base' => $hex !== '' ? "#{$hex}" : '#0036b1',
+    'base' => "#{$hex}",
     'medium' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 5)),
     'light' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 10)),
     'lighter' => _siempre_hsl_to_hex($hsl['h'], $hsl['s'], min(100, $hsl['l'] + 20)),

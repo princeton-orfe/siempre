@@ -6,7 +6,7 @@ Sub-theme of Claro for Drupal 10 to repurpose the theme for more flexible and us
 
 1. Go to **Appearance > Settings > Siempre** in your Drupal admin
 2. Find the "Accent Color" field under "Siempre Theme Settings"
-3. Use the color picker to select your desired accent color (default: rgb(0,54,177) / #0036b1)
+3. Use the color picker to select your desired accent color (default: rgb(231,117,0) / #e77500)
 4. Save the configuration
 
 ## How It Works
