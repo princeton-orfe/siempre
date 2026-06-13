@@ -25,3 +25,10 @@ regions:
   subfooter_third: 'Subfooter third column'
 regions_hidden:
   - sidebar_first
+
+features:
+  - logo
+  - name
+  - slogan
+  - favicon
+
