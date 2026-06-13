@@ -1185,7 +1185,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 .views-field-edit-node a {
   display: inline-block !important;
   padding: 0.35rem 0.75rem !important;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   font-family: var(--font-label, sans-serif) !important;
   font-size: 0.85rem !important;
   font-weight: 600 !important;
@@ -1219,7 +1219,7 @@ td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
 .custom-orfe-actions a {
   display: inline-block !important;
   padding: 0.35rem 0.75rem !important;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   font-family: var(--font-label, sans-serif) !important;
   font-size: 0.85rem !important;
   font-weight: 600 !important;
