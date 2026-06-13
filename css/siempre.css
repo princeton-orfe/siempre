@@ -758,13 +758,52 @@ input[type=submit]:focus {
   color: #ffffff !important;
 }
 
-/* Site branding - override hardcoded colors */
-.site-name a {
+/* Site branding - override hardcoded colors and handle logo layout */
+.block-system-branding-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+@media (max-width: 768px) {
+  .block-system-branding-block {
+    align-items: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+.block-system-branding-block .site-logo {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+.block-system-branding-block .site-logo img {
+  max-height: 72px !important;
+  width: auto !important;
+  display: block !important;
+}
+.block-system-branding-block .site-name {
+  margin: 0 !important;
+}
+.block-system-branding-block .site-name a {
   color: var(--siempre-accent, #e77500) !important;
   background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
+  font-family: var(--font-display, sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  text-decoration: none !important;
 }
-.site-name a:hover, .site-name a:focus {
+.block-system-branding-block .site-name a:hover, .block-system-branding-block .site-name a:focus {
   background-color: var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
+}
+.block-system-branding-block .site-slogan {
+  font-family: var(--font-label, sans-serif) !important;
+  font-size: 0.9375rem !important;
+  color: var(--color-neutral-60, #717171) !important;
+  margin: 0 !important;
+  text-align: center !important;
+  align-self: center !important;
 }
 
 /* Main menu - design consistent with paper-tiger */
