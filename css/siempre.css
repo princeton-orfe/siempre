@@ -859,44 +859,52 @@ input[type=submit]:focus {
 /* Site branding - handle logo layout and sizing */
 .site-branding {
   display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important; /* slogan is center-aligned relative to logo */
+  flex-direction: row !important; /* Row layout positions the branding block correctly in Claro */
   align-self: flex-start !important; /* left-aligned on wide screens */
   margin-left: 0 !important;
   margin-right: auto !important;
-  gap: 0.5rem !important;
   margin-bottom: 1.5rem !important;
   margin-top: 1rem !important;
 }
 @media (max-width: 768px) {
   .site-branding {
-    align-items: center !important;
+    justify-content: center !important;
     align-self: center !important;
-    text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 }
-.site-branding .site-logo {
+.site-branding .site-branding__logo-slogan-wrapper {
+  display: flex !important;
+  flex-direction: column !important; /* Logo and slogan pair stack vertically */
+  align-items: center !important; /* Slogan is center-aligned relative to logo */
+  gap: 0.5rem !important;
+}
+@media (max-width: 768px) {
+  .site-branding .site-branding__logo-slogan-wrapper {
+    align-items: center !important;
+  }
+}
+.site-branding .site-branding__logo-slogan-wrapper .site-logo {
   display: inline-block !important;
   margin: 0 !important;
   max-width: 425px !important;
   width: 100% !important;
 }
 @media (max-width: 768px) {
-  .site-branding .site-logo {
+  .site-branding .site-branding__logo-slogan-wrapper .site-logo {
     max-width: 280px !important; /* shrink logo on mobile to prevent overlapping toggler */
   }
 }
-.site-branding .site-logo img {
+.site-branding .site-branding__logo-slogan-wrapper .site-logo img {
   width: 100% !important;
   height: auto !important;
   display: block !important;
 }
-.site-branding .site-name {
+.site-branding .site-branding__logo-slogan-wrapper .site-name {
   margin: 0 !important;
 }
-.site-branding .site-name a {
+.site-branding .site-branding__logo-slogan-wrapper .site-name a {
   color: var(--siempre-accent, #e77500) !important;
   background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
   font-family: var(--font-display, sans-serif) !important;
@@ -904,10 +912,10 @@ input[type=submit]:focus {
   font-size: 1.5rem !important;
   text-decoration: none !important;
 }
-.site-branding .site-name a:hover, .site-branding .site-name a:focus {
+.site-branding .site-branding__logo-slogan-wrapper .site-name a:hover, .site-branding .site-branding__logo-slogan-wrapper .site-name a:focus {
   background-color: var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
 }
-.site-branding .site-slogan {
+.site-branding .site-branding__logo-slogan-wrapper .site-slogan {
   font-family: var(--font-label, sans-serif) !important;
   font-size: 0.9375rem !important;
   color: var(--color-neutral-60, #717171) !important;
