@@ -761,7 +761,6 @@ input[type=submit]:focus {
 /* Site-wide Header Container */
 .site-header {
   position: relative !important;
-  max-width: 1200px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100% !important;
@@ -926,7 +925,15 @@ input[type=submit]:focus {
 }
 
 /* Header and Pre-content region layout and container alignment */
-.region-header,
+.region-header {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  box-sizing: border-box !important;
+}
+
 .region-pre-content {
   max-width: 1200px !important;
   margin-left: auto !important;
