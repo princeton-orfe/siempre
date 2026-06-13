@@ -62,12 +62,19 @@
             <div class="site-slogan">{{ site_slogan }}</div>
           {% endif %}
         </div>
+
+        <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburger-icon"></span>
+          <span class="toggle-label">Menu</span>
+        </button>
       </div>
     {% endif %}
 
     {{ page.header }}
 
-    {{ page.pre_content }}
+    <div class="pre-content-wrapper" id="mobile-menu-target">
+      {{ page.pre_content }}
+    </div>
   </header>
 
   {{ page.breadcrumb }}

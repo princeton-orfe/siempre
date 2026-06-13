@@ -7,6 +7,7 @@ libraries:
   - siempre/styles
   - siempre/jump-to
   - siempre/file-remove-confirm
+  - siempre/navigation
 regions:
   header: 'Header'
   pre_content: 'Pre-content'
