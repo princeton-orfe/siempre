@@ -783,13 +783,14 @@ input[type="submit"] {
 	}
 }
 
-/* Site branding - override hardcoded colors and handle logo layout */
-.block-system-branding-block {
+/* Site branding - handle logo layout and sizing */
+.site-branding {
 	display: flex !important;
 	flex-direction: column !important;
 	align-items: flex-start !important;
 	gap: 0.5rem !important;
-	margin-bottom: 1rem !important;
+	margin-bottom: 1.5rem !important;
+	margin-top: 1rem !important;
 
 	@media (max-width: 768px) {
 		align-items: center !important;
@@ -801,10 +802,12 @@ input[type="submit"] {
 	.site-logo {
 		display: inline-block !important;
 		margin: 0 !important;
+		max-width: 425px !important;
+		width: 100% !important;
 
 		img {
-			max-height: 72px !important;
-			width: auto !important;
+			width: 100% !important;
+			height: auto !important;
 			display: block !important;
 		}
 	}

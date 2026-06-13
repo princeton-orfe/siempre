@@ -44,6 +44,26 @@
 #}
 <div class="layout-container">
 
+  {% if logo or site_name or site_slogan %}
+    <div class="region region-header header">
+      <div class="site-branding">
+        {% if logo %}
+          <a href="{{ front_page }}" rel="home" class="site-logo">
+            <img src="{{ logo }}" alt="{{ 'Home'|t }}" fetchpriority="high" />
+          </a>
+        {% endif %}
+        {% if site_name %}
+          <div class="site-name">
+            <a href="{{ front_page }}" rel="home">{{ site_name }}</a>
+          </div>
+        {% endif %}
+        {% if site_slogan %}
+          <div class="site-slogan">{{ site_slogan }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
   {{ page.header }}
 
   {{ page.pre_content }}
