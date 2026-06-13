@@ -840,6 +840,37 @@ input[type="submit"] {
 	}
 }
 
+/* Header and Pre-content region layout and container alignment */
+.region-header,
+.region-pre-content {
+	max-width: 1200px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: 100% !important;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	box-sizing: border-box !important;
+}
+
+.region-pre-content {
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center !important;
+	flex-wrap: wrap !important;
+
+	@media (max-width: 768px) {
+		flex-direction: column !important;
+		justify-content: center !important;
+		align-items: center !important;
+		gap: 0.5rem !important;
+	}
+}
+
+/* Remove text underline from all menus */
+ul.menu a {
+	text-decoration: none !important;
+}
+
 /* Main menu - design consistent with paper-tiger */
 ul.menu {
 	list-style: none !important;
