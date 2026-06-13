@@ -1753,3 +1753,16 @@ body.page-node-type-graduate-student-record {
 	}
 }
 
+/* Table captions styled like H3 elements */
+caption, .caption {
+	font-family: var(--font-display, sans-serif) !important;
+	font-size: 1.17em !important;
+	font-weight: 600 !important;
+	color: var(--color-ink, #333333) !important;
+	text-align: left !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 0.75rem !important;
+	display: table-caption !important;
+}
+
+
