@@ -924,7 +924,7 @@ input[type=submit]:focus {
 }
 .site-branding .site-branding__logo-slogan-wrapper .site-slogan {
   font-family: var(--font-label, sans-serif) !important;
-  font-size: 0.9375rem !important;
+  font-size: 1.2rem !important;
   color: var(--color-neutral-60, #717171) !important;
   margin: 0 !important;
   margin-top: -1em !important;
