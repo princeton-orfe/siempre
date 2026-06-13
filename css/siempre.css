@@ -920,6 +920,7 @@ input[type=submit]:focus {
   font-size: 0.9375rem !important;
   color: var(--color-neutral-60, #717171) !important;
   margin: 0 !important;
+  margin-top: -1em !important;
   text-align: center !important;
   align-self: center !important;
 }
