@@ -1170,17 +1170,6 @@ ul.menu ul span.is-active {
   background-color: var(--siempre-accent-bg-light, rgba(231, 117, 0, 0.05)) !important;
 }
 
-/* GSR PUID links - special button style */
-td.views-field-field-gsr-puid a {
-  background-color: var(--siempre-accent-bg-light, #FFF7F2) !important;
-  color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
-  border-color: var(--siempre-accent-darker, rgb(109, 46, 3)) !important;
-}
-td.views-field-field-gsr-puid a:hover, td.views-field-field-gsr-puid a:focus {
-  background-color: var(--siempre-accent-bg-medium, rgba(231, 117, 0, 0.1)) !important;
-  transform: translateY(-2px) !important;
-}
-
 /* Edit node buttons */
 .views-field-edit-node a {
   display: inline-block !important;
