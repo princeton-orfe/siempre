@@ -420,8 +420,15 @@ function siempre_preprocess_page_title(&$variables) {
  * Implements hook_preprocess_html().
  */
 function siempre_preprocess_html(&$variables) {
-  // Get the accent color from theme settings.
-  $accent_color = theme_get_setting('accent_color') ?? '#e77500';
+  // Get the accent color from theme settings. theme_get_setting() reads ONLY
+  // the active theme's settings store — it does not walk the base-theme chain.
+  // When a sub-theme of siempre is the active theme and hasn't explicitly set
+  // an accent_color, the lookup returns NULL and the CSS variables would land
+  // on the hardcoded orange below. Fall back to siempre's own settings first
+  // so sub-themes inherit the configured accent without re-declaring it.
+  $accent_color = theme_get_setting('accent_color')
+    ?? theme_get_setting('accent_color', 'siempre')
+    ?? '#e77500';
 
   // Calculate complementary colors.
   $colors = _siempre_calculate_color_variants($accent_color);
@@ -652,18 +659,32 @@ function siempre_preprocess_page(&$variables) {
   // Pass site identity variables to page.html.twig.
   $variables['front_page'] = \Drupal\Core\Url::fromRoute('<front>')->toString();
 
+  // Each feature toggle falls back to siempre's own settings store if the
+  // active theme is a sub-theme that hasn't set it. theme_get_setting() does
+  // not walk the base-theme chain, so without these fallbacks a fresh sub-theme
+  // of siempre would return NULL for every features.* key and the hardcoded
+  // brand block in page.html.twig (`{% if logo or site_name or site_slogan %}`)
+  // would render nothing. Drupal would then fall through to whatever
+  // system_branding_block placement exists in the header region.
+  $logo_feature   = theme_get_setting('features.logo')   ?? theme_get_setting('features.logo', 'siempre');
+  $name_feature   = theme_get_setting('features.name')   ?? theme_get_setting('features.name', 'siempre');
+  $slogan_feature = theme_get_setting('features.slogan') ?? theme_get_setting('features.slogan', 'siempre');
+
   $variables['logo'] = NULL;
-  if (theme_get_setting('features.logo')) {
-    $variables['logo'] = theme_get_setting('logo.url');
+  if ($logo_feature) {
+    // Same inheritance logic for the resolved logo URL — fall back to siempre's
+    // configured logo so sub-themes that ship without their own logo.svg don't
+    // emit a broken /themes/custom/<subtheme>/logo.svg reference.
+    $variables['logo'] = theme_get_setting('logo.url') ?? theme_get_setting('logo.url', 'siempre');
   }
 
   $variables['site_name'] = NULL;
-  if (theme_get_setting('features.name')) {
+  if ($name_feature) {
     $variables['site_name'] = \Drupal::config('system.site')->get('name');
   }
 
   $variables['site_slogan'] = NULL;
-  if (theme_get_setting('features.slogan')) {
+  if ($slogan_feature) {
     $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
   }
 }
