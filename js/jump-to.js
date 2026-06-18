@@ -100,13 +100,25 @@
   }
 
   function placeNav(main, nav) {
-    // Prefer: insert right after the site header region so the nav
-    // sits directly below the main menu rather than inside <main>.
-    // Fall back to inserting as a sibling immediately before <main>.
-    var header = document.querySelector('.region-header') ||
-                 document.querySelector('header[role="banner"]') ||
+    // Prefer: insert right after the site header so the nav sits below the
+    // brand row AND every menu region (header / pre_content) rather than
+    // inside <main>. Fall back to inserting as a sibling immediately before
+    // <main>.
+    //
+    // The lookup priority below is significant. siempre's page.html.twig
+    // renders the brand block inside <div class="region region-header header">
+    // AND the page.header region (which contains the main navigation block)
+    // also produces a <div class="region region-header"> wrapper. Selecting on
+    // .region-header therefore matches the brand wrapper first, and inserting
+    // after it lands the jump-to nav between the brand and the main menu —
+    // exactly where we don't want it. Always prefer the outer <header> element
+    // by role / class first; the .region-header fallback only fires when no
+    // <header> element exists at all.
+    var header = document.querySelector('header[role="banner"]') ||
+                 document.querySelector('header.site-header') ||
                  document.querySelector('header.header') ||
-                 document.querySelector('header');
+                 document.querySelector('header') ||
+                 document.querySelector('.region-header');
     if (header && header.parentNode) {
       header.parentNode.insertBefore(nav, header.nextSibling);
       return;
