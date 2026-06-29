@@ -689,4 +689,23 @@ function siempre_preprocess_page(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_block().
+ */
+function siempre_preprocess_block(&$variables) {
+  if (isset($variables['plugin_id']) && $variables['plugin_id'] === 'system_main_block') {
+    $request = \Drupal::request();
+    if ($exception = $request->attributes->get('exception')) {
+      if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface && $exception->getStatusCode() === 403) {
+        if (\Drupal::currentUser()->isAnonymous()) {
+          $variables['content']['#markup'] = \Drupal\Core\Render\Markup::create(t('You are not authorized to access this page. You may need to <a href=":login">Log In</a>.', [
+            ':login' => \Drupal\Core\Url::fromRoute('user.login')->toString(),
+          ]));
+        }
+      }
+    }
+  }
+}
+
+
 
