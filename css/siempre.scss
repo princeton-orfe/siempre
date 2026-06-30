@@ -34,7 +34,6 @@ main.main-content {
 
 .field--name-field-submission-comments {
 	margin-top: 2em;
-	border-top: 10px solid #f3f4f9;
 }
 
 .node--type-report .node__content .node__links, .comment__meta>a, .comment .content h3 {
@@ -168,20 +167,13 @@ main.main-content {
    that doubles as a threading indicator when comments are nested. */
 .field--name-field-submission-comments {
 
-	/* "Submission Comments" section heading. */
-	> h2.title {
+	/* "Submission Comments" section heading & Add new comment heading. */
+	> h2.title,
+	> h2.comment-form__title {
 		margin: 1.5em 0 0.75em;
 		padding-bottom: 0.4em;
 		font-size: 1.4em;
 		border-bottom: 2px solid var(--siempre-accent, #e77500);
-	}
-
-	/* "Add new comment" heading at the bottom. */
-	> h2.comment-form__title {
-		margin-top: 2em;
-		padding-bottom: 0.3em;
-		font-size: 1.2em;
-		border-bottom: 1px solid #ccc;
 	}
 
 	.comment {
