@@ -7,6 +7,10 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
+// Loaded while the ADMIN theme (claro) is active, so siempre.theme is not
+// necessarily loaded — require the shim explicitly rather than assuming it.
+require_once __DIR__ . '/includes/compat.inc';
+
 /**
  * Implements hook_form_system_theme_settings_alter().
  */
@@ -20,7 +24,7 @@ function siempre_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   $form['siempre_settings']['accent_color'] = [
     '#type' => 'color',
     '#title' => t('Accent Color'),
-    '#default_value' => theme_get_setting('accent_color') ?? '#e77500',
+    '#default_value' => _siempre_theme_setting('accent_color') ?? '#e77500',
     '#description' => t('Select the primary accent color for the theme. This color will be used for links, menu backgrounds, and other accent elements. Complementary colors will be automatically derived.'),
   ];
 
@@ -36,13 +40,13 @@ function siempre_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   $form['theme_settings']['toggle_name'] = [
     '#type' => 'checkbox',
     '#title' => t('Site name'),
-    '#default_value' => theme_get_setting('features.name'),
+    '#default_value' => _siempre_theme_setting('features.name'),
   ];
 
   $form['theme_settings']['toggle_slogan'] = [
     '#type' => 'checkbox',
     '#title' => t('Site slogan'),
-    '#default_value' => theme_get_setting('features.slogan'),
+    '#default_value' => _siempre_theme_setting('features.slogan'),
   ];
 }
 
